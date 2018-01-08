@@ -59,19 +59,21 @@ Page({
     //排序方式 - 20180108 - LQ
     http.httpPost('nine_sort', {},function(res){
       that.setData({
-        sortList: res.data.sorts_type
+        sortList: res.data.sorts_type,
+        currentTaB : res.data.sorts_type[0]['id']
       });
       
     });
 
 
     //商品列表 - 20180108 - LQ
-    http.httpPost('nine', { sort: that.data.currentTaB, type_id:options.type_id},function(res){
+    http.httpPost('nine', { sort: that.data.currentTab, type_id:options.type_id},function(res){
         that.setData({
           goodsList: res.data.nine_products
         });
     });
 
+    console.log(that.data.goodsList);
   },
 
 

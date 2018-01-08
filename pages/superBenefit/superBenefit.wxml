@@ -37,7 +37,7 @@
     <view class='main'>
       <view class='main_top'>
         <image src='../../images/superBenefit/sanjiao.png' class='sanjiao'></image>
-        <view catchtap="toSubject">
+        <view data-type='{{nine_banner.type_id}}' catchtap="toSubject">
           <image src='../../images/superBenefit/youhui_bd2_img.png' class='title_img'></image>
           <text class='title'>19.9专区</text>
           <view class='right'>
