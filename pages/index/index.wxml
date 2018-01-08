@@ -85,7 +85,7 @@
   </view>
 
   <view class='product'>
-    <view class='product_child' catchtap="toGoodsDetail">
+    <view class='product_child' data-id='840' data-type='' catchtap="toGoodsDetail">
       <image src='../../images/product.png'></image>
       <view class='product_name'>
         <text class='name_text break'>产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍</text>

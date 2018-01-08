@@ -99,7 +99,7 @@ Page({
   },
   toGoodsDetail:function(e){
     wx.navigateTo({
-      url: "../goodsDetail/goodsDetail"
+      url: "../goodsDetail/goodsDetail?id=" + e.currentTarget.dataset.id +  '&type=' + e.currentTarget.dataset.type
     })
   }
 })
