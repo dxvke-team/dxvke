@@ -1,0 +1,126 @@
+<!--index.wxml-->
+<view class="container" style='padding-top:0px;'>
+  <view style="width:100%;height:260rpx;">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:100%;' indicator-color='white;' indicator-active-color="#ff425f">
+      <block wx:for="{{imgUrls}}" wx:key="{{item}}">
+        <swiper-item>
+          <image src="{{item.banner_image}}" class="slide-image" style="width:100%;height:100%;"/>
+        </swiper-item>
+      </block>
+    </swiper>
+</view>
+  
+
+  <view class='navigate'>
+     <view class='width_navigate'> 
+      <view class='navigate_child' catchtap="toClassify">
+        <view style="width:100%;">
+          <image src="../../images/index/hot.png"></image>
+        </view>
+        <view class="navigate_name">热门</view>
+      </view>
+      <view class='navigate_child'>
+        <view style="width:100%;">
+          <image src="../../images/index/home.png"></image>
+        </view>
+        <view class="navigate_name">家居</view>
+      </view>
+      <view class='navigate_child'>
+        <view style="width:100%;">
+          <image src="../../images/index/costume.png"></image>
+        </view>
+        <view class="navigate_name">服饰</view>
+      </view>
+      <view class='navigate_child'>
+        <view style="width:100%;">
+          <image src="../../images/index/bussiness.png"></image>
+        </view>
+        <view class="navigate_name">办公文体</view>
+      </view>
+      <view class='navigate_child'>
+        <view style="width:100%;">
+          <image src="../../images/index/numerical.png"></image>
+        </view>
+        <view class="navigate_name">数码家电</view>
+      </view>
+      <view class='navigate_child'>
+        <view style="width:100%;">
+          <image src="../../images/index/beauty.png"></image>
+        </view>
+        <view class="navigate_name">美妆</view>
+      </view>
+      <view class='navigate_child'>
+        <view style="width:100%;">
+          <image src="../../images/index/mom.png"></image>
+        </view>
+        <view class="navigate_name">母婴</view>
+      </view>
+      <view class='navigate_child'>
+        <view style="width:100%;">
+          <image src="../../images/index/cate.png"></image>
+        </view>
+        <view class="navigate_name">美食</view>
+      </view>
+      <view class='navigate_child'>
+        <view style="width:100%;">
+          <image src="../../images/index/sport.png"></image>
+        </view>
+        <view class="navigate_name">运动户外</view>
+      </view>
+      <view class='navigate_child'>
+        <view style="width:100%;">
+          <image src="../../images/index/car.png"></image>
+        </view>
+        <view class="navigate_name">车品周边</view>
+      </view>
+     </view> 
+  </view>
+
+
+  <view class='store_type'>
+     <image src='../../images/index/acerstore.png' catchtap="toAcerstore"></image>
+     <image src='../../images/index/overflow.png' catchtap="toOverflow"></image>
+     <image src='../../images/index/new.png'></image>
+     <image src='../../images/index/fanswelare.png' catchtap="toFanswefare"></image>
+  </view>
+
+  <view class='product'>
+    <view class='product_child'>
+      <image src='../../images/product.png'></image>
+      <view class='product_name'>
+        <text class='name_text break'>产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍</text>
+        <view style="margin: 15rpx 0;">
+            <text class="juan_style">
+               <text class="juan_style_left">券</text>
+               <text class="juan_style_right">100元</text>
+            </text>
+            <text class="return_num_style">返{{goods.fans_acer}}元宝</text>
+        </view>
+        <view>
+           <text class='price'>￥</text><text class='rmb'>88</text><text class='corner'>.8</text>
+           <text class='volumn'>513件已售</text>
+        </view>
+        
+      </view>
+    </view>
+    <view class='product_child'>
+      <image src='../../images/product.png'></image>
+      <view class='product_name'>
+        <text class='name_text break'>产品介绍产品介绍产品介绍产品介绍产品介绍</text>
+        <view style="margin: 15rpx 0;">
+            <text class="juan_style">
+               <text class="juan_style_left">券</text>
+               <text class="juan_style_right">100元</text>
+            </text>
+            <text class="return_num_style">返{{goods.fans_acer}}元宝</text>
+        </view>
+        <view>
+           <text class='price'>￥</text><text class='rmb'>88</text><text class='corner'>.8</text>
+           <text class='volumn'>513件已售</text>
+        </view>
+        
+      </view>
+    </view>
+  </view>
+
+</view>

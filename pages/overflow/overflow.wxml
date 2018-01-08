@@ -1,0 +1,49 @@
+<!--pages/overflow/overflow.wxml-->
+<view class='overflow'>
+  <view>
+    <image src='../../images/superBenefit/first.jpg' class='nav'></image>
+  </view>
+  <view class='tab'>
+    <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">11:00已开抢</view>
+    <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">11:00已开抢</view>
+    <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">11:00已开抢</view>
+    <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">11:00已开抢</view>
+  </view>
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+    <swiper-item wx:for="{{[0,1,2,3]}}" wx:key="{{item}}">
+      <scroll-view scroll-y="true" class="scoll-h">
+        <block wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="*this">
+          <view class="item-ans">
+            <view class="avatar">
+              <image class="img" src="http://ookzqad11.bkt.clouddn.com/avatar.png"></image>
+            </view>
+            <view class="expertInfo">
+              <view class="name">名字哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈啊哈哈哈哈</view>
+              <view class='des'>
+                <view style='width:280rpx;'>
+                  <view style="margin: 15rpx 0;">
+                    <text class="juan_style">
+                    <text class="juan_style_left">券</text>
+                    <text class="juan_style_right">100元</text>
+                    </text>
+                    <text class="return_num_style">返{{goods.fans_acer}}元宝</text>
+                  </view>
+                  <view style='color:#ff425f;'>
+                    <text style='font-size:28rpx;'>￥</text>
+                    <text style='font-size:40rpx;'>108</text>
+                    <text style='font-size:20rpx;'>.99</text>
+                    <text class='old_price'>￥200<text>.99</text></text>
+                  </view>
+                </view>
+                <view style='flex-grow:2;text-align:center;'>
+                  <text style='font-size:24rpx;color:#ff425f;'>已抢23443件</text>
+                  <view class='btn'>立刻抢</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

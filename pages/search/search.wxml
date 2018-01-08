@@ -1,0 +1,6 @@
+<view class='head_searh'>
+    <view class='header'>
+      <image src='../../images/search/search_img.png' class="search" ></image>
+    </view>
+    <image src='../../images/search/detail.png' style='width:100%;' mode="{{mode}}"></image>
+</view>

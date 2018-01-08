@@ -1,0 +1,39 @@
+<!--pages/fanswefare/fanswefare.wxml-->
+<view>
+  <view>
+    <image src='../../images/superBenefit/first.jpg' class='nav'></image>
+  </view>
+  <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+    <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">价格优先</view>
+    <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">销量优先</view>
+    <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">元宝优先</view>
+    <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">时间优先</view>
+  </scroll-view>
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+    <swiper-item wx:for="{{[0,1,2,3]}}" wx:key="{{item}}">
+      <scroll-view scroll-y="true" class="scoll-h">
+        <block wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="*this">
+          <view class='product_child'>
+            <image src='../../images/product.png'></image>
+            <view class='product_name'>
+              <text class='name_text break'>产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍</text>
+              <view style="margin: 15rpx 0;">
+                <text class="juan_style">
+               <text class="juan_style_left">券</text>
+                <text class="juan_style_right">100元</text>
+                </text>
+                <text class="return_num_style">返{{goods.fans_acer}}元宝</text>
+              </view>
+              <view>
+                <text class='price'>￥</text>
+                <text class='rmb'>88</text>
+                <text class='corner'>.8</text>
+                <text class='volumn'>513件已售</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

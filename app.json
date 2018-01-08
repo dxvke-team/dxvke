@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/acerstore/acerstore",
+    "pages/user/user",
+    "pages/search/search",
+    "pages/product/product",
+    "pages/classify/classify",  
+    "pages/exchangeList/exchangeList",
+    "pages/overflow/overflow",
+    "pages/fanswefare/fanswefare",
+    "pages/superBenefit/superBenefit",
+    "pages/subject/subject"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ff425f",
+    "navigationBarTitleText": "洞悉微客",
+    "navigationBarTextStyle": "#ffffff"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index_selected.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "智搜",
+        "iconPath": "images/sousuo.png",
+        "selectedIconPath": "images/sousuo_selected.png"
+      },
+      {
+        "pagePath": "pages/superBenefit/superBenefit",
+        "text": "超实惠",
+        "iconPath": "images/discount.png",
+        "selectedIconPath": "images/discount_selected.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人中心",
+        "iconPath": "images/geren.png",
+        "selectedIconPath": "images/geren_selected.png"
+      }
+    ],
+    "color": "#444444",
+    "position": "bottom",
+    "selectedColor": "#ff425f"
+  },
+  "debug": false
+}

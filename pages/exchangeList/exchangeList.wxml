@@ -1,0 +1,32 @@
+<!--pages/exchangeList/exchangeList.wxml-->
+<view >
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+        <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">全部</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">虚拟类</view>
+        <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">实物类</view>
+    </scroll-view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="height:{{winHeight}}rpx">
+        <swiper-item wx:for="{{[0,1,2]}}" wx:key="{{item}}">
+            <scroll-view scroll-y="true" class="scoll-h" >
+            <view class='tip'>
+            <text>累计为您成功免单100.00元</text>
+            </view>
+                 
+                <block wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="*this">
+                    <view class="item-ans">
+                        <view class="avatar">
+                            <image class="img" src="http://ookzqad11.bkt.clouddn.com/avatar.png"></image>
+                        </view>
+                        <view class="expertInfo">
+                            <view class="name">名字</view>
+                            <view class='ex_num'>x1</view>
+                            <view class='date'>日期：2017-12-13 13:12:45</view>
+                        </view>
+                        <view class="askBtn">已发货</view> 
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>
