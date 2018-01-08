@@ -51,6 +51,7 @@ page{
   color: #333333;
   font-size: 26rpx;
   line-height: 40rpx;
+  height: 40rpx;
 }
 
 .name_text{

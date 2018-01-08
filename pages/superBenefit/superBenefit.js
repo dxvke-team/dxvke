@@ -84,5 +84,15 @@ Page({
     wx.navigateTo({
       url: '../subject/subject',
     })
+  },
+  toDiscount:function(e){
+    wx.navigateTo({
+      url: '../discount/discount',
+    })
+  },
+  toEssential: function (e) {
+    wx.navigateTo({
+      url: '../essential/essential',
+    })
   }
 })
