@@ -1,5 +1,5 @@
 <view class='head_searh'>
-    <view class='header'>
+    <view class='header' catchtap="toSearchPage">
       <image src='../../images/search/search_img.png' class="search" ></image>
     </view>
     <image src='../../images/search/detail.png' style='width:100%;' mode="{{mode}}"></image>

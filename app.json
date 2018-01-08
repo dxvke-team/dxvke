@@ -10,7 +10,11 @@
     "pages/overflow/overflow",
     "pages/fanswefare/fanswefare",
     "pages/superBenefit/superBenefit",
-    "pages/subject/subject"
+    "pages/subject/subject",
+    "pages/searchPage/searchPage",
+    "pages/discount/discount",
+    "pages/essential/essential",
+    "pages/goodsDetail/goodsDetail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ff425f",
