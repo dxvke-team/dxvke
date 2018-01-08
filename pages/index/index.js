@@ -85,6 +85,10 @@ Page({
     wx.navigateTo({
       url: "../fanswefare/fanswefare"
     })
+  },
+  toGoodsDetail:function(e){
+    wx.navigateTo({
+      url: "../goodsDetail/goodsDetail"
+    })
   }
-
 })

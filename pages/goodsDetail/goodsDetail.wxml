@@ -1,0 +1,108 @@
+<!--pages/goodsDeatail/goodsDetail.wxml-->
+<view class='goodsDetail'>
+  <view class='detail'>
+    <image src='../../images/product.png' class='picture'></image>
+    <view class='detail_des'>
+      <text class='goods_name break'>商品名称商哈哈哈哈啊哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈品名称商品名称商品名晒单感受老大哥搜郭德纲is都过得发个梵蒂冈地方是个单身狗</text>
+      <view>
+        <text class='goods_price'>￥<text style='font-size:60rpx;'>33</text>
+        <text>.99</text></text>
+        <text style="margin: 15rpx 0;">
+          <text class="juan_style">
+               <text class="juan_style_left">券</text>
+          <text class="juan_style_right">100元</text>
+          </text>
+          <text class="return_num_style">返{{goods.fans_acer}}元宝</text>
+        </text>
+      </view>
+      <view style="font-size:24rpx; color:#999;margin-top:10rpx;">
+          <text>价格<text style='text-decoration: line-through;margin-right:30rpx;'>￥77</text></text> <text>销量12件</text>
+      </view>
+    
+    
+    
+    </view>
+     <view class='des'>
+       <view class='des_title' catchtap='click'>商品图文详情（点击查看）
+       <image src='../../images/gt_white.png' class='gt' hidden='{{show}}'></image>
+       <image src='../../images/top.png'  class='gt' hidden='{{!show}}'></image>
+       </view>
+       <view style='font-size:0;' hidden='{{!show}}'>
+          <image src='../../images/product.png' wx:for="{{list}}" class='des_picture' mode="widthFix" wx:key="{{list}}"></image>
+       </view>
+     </view>
+  </view>
+   <view class='title'>
+      <view style='border-left:6rpx solid #ff425f;padding-left:20rpx;'>
+        <text>猜你喜欢</text>
+      </view>
+    </view>
+   <view class='product'>
+    <view class='product_child' catchtap="toDetail">
+      <image src='../../images/product.png'></image>
+      <view class='product_name'>
+        <text class='name_text break'>产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍</text>
+        <view style="margin: 15rpx 0;">
+            <text class="juan_style">
+               <text class="juan_style_left">券</text>
+               <text class="juan_style_right">100元</text>
+            </text>
+            <text class="return_num_style">返{{goods.fans_acer}}元宝</text>
+        </view>
+        <view>
+           <text class='price'>￥</text><text class='rmb'>88</text><text class='corner'>.8</text>
+           <text class='volumn'>513件已售</text>
+        </view>
+        
+      </view>
+    </view>
+    <view class='product_child'>
+      <image src='../../images/product.png'></image>
+      <view class='product_name'>
+        <text class='name_text break'>产品介绍产品介绍产品介绍产品介绍产品介绍</text>
+        <view style="margin: 15rpx 0;">
+            <text class="juan_style">
+               <text class="juan_style_left">券</text>
+               <text class="juan_style_right">100元</text>
+            </text>
+            <text class="return_num_style">返{{goods.fans_acer}}元宝</text>
+        </view>
+        <view>
+           <text class='price'>￥</text><text class='rmb'>88</text><text class='corner'>.8</text>
+           <text class='volumn'>513件已售</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='footer'>
+      <view class='tab1 tab' catchtap='toHome'>
+         <image src='../../images/index/home2.png'></image>
+         <view>首页</view>
+      </view>
+      <view class='tab2 tab' catchtap='service'>
+         <image src='../../images/index/service.png'></image>  
+         <view>客服</view>
+      </view>
+      <view class='tab tab3'><view>浏览器领劵</view></view>
+      <view class='tab tab4' catchtap='showJuan'><view>淘口令领劵</view></view>
+  </view>
+   <view class="model" hidden='{{showJuan}}'>
+      <view class="model_bd">
+      </view>
+      <view class="model_main">
+        <view class="model_main_des">
+          <view class="model_title">淘口令购买</view>
+          <input type="text"  class="word" id="kouling"></input>
+          <view class="des">在点击复制后，打开淘宝APP购买</view>
+          <view class="des">若一键复制失败，请长按虚线内文字</view>
+          <button class="m_btn"> 一键复制</button>
+        </view>
+        <image src="../../images/cancel_img.png" alt="" catchtap='closeJuan'></image>
+      </view>
+  </view> 
+  <view class="model" hidden='{{showService}}'>
+      <view class="model_bd"></view>
+      <image src="../../images/qr.jpg" alt="" class="model_main rq"></image>
+      <image src="../../images/cancel_img.png" alt=""  class="cancel" catchtap='close'></image>
+    </view>
+</view>

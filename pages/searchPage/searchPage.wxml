@@ -1,0 +1,71 @@
+<!--pages/searchPage/searchPage.wxml-->
+<view class='searchPage'>
+  <view class='search'>
+    <view>
+      <image src="../../images/search/search.png"></image>
+      <input focus="{{focus}}" bindfocus="bindfocus" bindconfirm="bindconfirm" confirm-type="search"></input>
+    </view>
+    <text catchtap='toClose'>取消</text>
+  </view>
+  <view class='search_history' hidden="{{!show}}">
+    <text class='title'>热门搜索</text>
+    <view class='keyword'>
+      <view catchtap='bindconfirm'>冬装</view>
+      <view>雪地靴</view>
+      <view>毛衣</view>
+      <view>火锅</view>
+      <view>冬装</view>
+      <view>雪地靴</view>
+      <view>毛衣</view>
+      <view>火锅</view>
+    </view>
+    <view style='position: relative;'>
+      <text class='title'>历史搜索</text>
+      <image src="../../images/search/trash_litter.png" class='trash'></image>
+    </view>
+    <view class='keyword'>
+      <view catchtap='bindconfirm'>冬装</view>
+      <view>雪地靴</view>
+      <view>毛衣</view>
+      <view>火锅</view>
+      <view>冬装</view>
+      <view>雪地靴</view>
+      <view>毛衣</view>
+      <view>火锅</view>
+    </view>
+  </view>
+  <view hidden='{{show}}'>
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+      <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">综合排序</view>
+      <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">销量优先</view>
+      <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">价格优先</view>
+    </scroll-view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+      <swiper-item wx:for="{{[0,1,2]}}" wx:key="{{item}}">
+        <scroll-view scroll-y="true" class="scoll-h">
+          <block wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="*this">
+            <view class='product_child'>
+              <image src='../../images/product.png'></image>
+              <view class='product_name'>
+                <text class='name_text break'>产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍</text>
+                <view style="margin: 15rpx 0;">
+                  <text class="juan_style">
+               <text class="juan_style_left">券</text>
+                  <text class="juan_style_right">100元</text>
+                  </text>
+                  <text class="return_num_style">返{{goods.fans_acer}}元宝</text>
+                </view>
+                <view>
+                  <text class='price'>￥</text>
+                  <text class='rmb'>88</text>
+                  <text class='corner'>.8</text>
+                  <text class='volumn'>513件已售</text>
+                </view>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
