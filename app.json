@@ -5,7 +5,7 @@
     "pages/user/user",
     "pages/search/search",
     "pages/product/product",
-    "pages/classify/classify",  
+    "pages/classify/classify",
     "pages/exchangeList/exchangeList",
     "pages/overflow/overflow",
     "pages/fanswefare/fanswefare",
@@ -14,7 +14,11 @@
     "pages/searchPage/searchPage",
     "pages/discount/discount",
     "pages/essential/essential",
-    "pages/goodsDetail/goodsDetail"
+    "pages/goodsDetail/goodsDetail",
+    "pages/orderList/orderList",
+    "pages/addressList/addressList",
+    "pages/editAddress/editAddress",
+    "pages/myTracks/myTracks"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ff425f",

@@ -81,3 +81,16 @@ font-size: 20rpx;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.all_btn{
+  background-color: #f6f6f6;
+   position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.all_btn button{
+  background-color: rgb(255, 82, 109);
+  color: white;
+  font-size: 32rpx;
+  width: 90%;
+  margin: 30rpx auto;
+}

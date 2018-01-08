@@ -80,6 +80,21 @@ getUserInfo: function() {
       })
     }
   })
-}
+},
+toOrderList:function(e){
+  wx.navigateTo({
+    url: '../orderList/orderList',
+  })
+},
+  toAddressList:function(e){
+    wx.navigateTo({
+      url: '../addressList/addressList',
+    })
+  },
+  toMyTracks:function(e){
+    wx.navigateTo({
+      url: '../myTracks/myTracks',
+    })
+  }
 
 })

@@ -6,36 +6,36 @@
   <image class='acer' src='../../images/acer.png'></image>
   <text class='acer_number'>88</text>
 </view>
-<view class='my_order'>
+<view class='my_order' catchtap='toOrderList'>
   <text class='my_order_child'>我的订单</text>
   <text class='total_order'>查看全部</text>
   <image src='../../images/user/corner.png'></image>
 </view>
 <view class='order_type'>
-  <view class='order_type_child_first'>
+  <view class='order_type_child_first' catchtap='toOrderList'>
     <image src='../../images/user/addOrder.png'></image>
     <text>添加</text>
   </view>
-  <view class='order_type_child'>
+  <view class='order_type_child' catchtap='toOrderList'>
     <image src='../../images/user/allOrder.png'></image>
     <text>全部</text>
   </view>
-  <view class='order_type_child'>
+  <view class='order_type_child' catchtap='toOrderList'>
     <image src='../../images/user/waitOrder.png'></image>
     <text>待返</text>
   </view>
-  <view class='order_type_child_last' style='float:right'>
+  <view class='order_type_child_last' style='float:right' catchtap='toOrderList'>
     <image src='../../images/user/overOrder.png'></image>
     <text>已返</text>
   </view>
 </view>
 
 <view class='manager'>
-  <view class='manager_child'>
+  <view class='manager_child'catchtap='toAddressList'>
     <image src='../../images/user/address.png'></image>
     <text>收货管理</text>
   </view>
-  <view class='manager_child'>
+  <view class='manager_child' catchtap='toMyTracks'>
     <image src='../../images/user/footPrint.png'></image>
     <text>我的足迹</text>
   </view>
