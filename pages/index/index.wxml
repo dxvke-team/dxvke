@@ -13,7 +13,7 @@
 
   <view class='navigate'>
      <view class='width_navigate'> 
-      <view class='navigate_child' catchtap="toClassify">
+      <view class='navigate_child' id='1' catchtap="toClassify">
         <view style="width:100%;">
           <image src="../../images/index/hot.png"></image>
         </view>

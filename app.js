@@ -7,6 +7,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     wx.setStorageSync('PHPSESSID',null);
+    wx.setStorageSync('member_id', null);
   },
 
   globalFunction: function(){

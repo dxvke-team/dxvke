@@ -24,6 +24,8 @@ Page({
   {
     var that = this;
     http.httpPost('c_index_nine',{},function(res){
+        console.log(res.data.type);
+        console.log(res.data.goods);
         that.setData({
           nine_banner : res.data.type,
           nine_goods : res.data.goods

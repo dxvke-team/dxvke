@@ -31,7 +31,7 @@ Page({
           })
         }
         else if (res.authSetting['scope.userInfo']) {
-          that.getUserInfo();
+          that.login();
         }
       }
     })
@@ -65,6 +65,7 @@ Page({
       }
     });
   },
+
 
 getUserInfo: function() {
   var that = this;

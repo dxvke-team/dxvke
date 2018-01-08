@@ -1,13 +1,16 @@
 // pages/exchangeList/exchangeList.js
 // var app = getApp();
+var http = require('../../utils/httpHelper.js');
 Page({
   data: {
     winHeight: "",//窗口高度
-    currentTab: 0, //预设当前项的值
+    currentTab: 0, //预设当前项的值 1虚拟 2实物 3全部
     scrollLeft: 0, //tab标题的滚动条位置
     expertList: [{ //假数据
 
-    }]
+    }],
+    exchangeList:[], //兑换记录列表
+    freeMoney:0, //累计免单金额
   },
   // 滚动切换标签样式
   switchTab: function (e) {
@@ -18,12 +21,15 @@ Page({
   },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
+    var that = this;
     var cur = e.target.dataset.current;
     if (this.data.currentTaB == cur) { return false; }
     else {
-      this.setData({
+      that.setData({
         currentTab: cur
-      })
+      });
+      console.log(that.data.currentTab);
+      that.getOrderList();
     }
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
@@ -52,6 +58,20 @@ Page({
         });
       }
     });
+
+    that.getOrderList();
   },
+
+  getOrderList:function(){
+    var that  = this;
+    http.httpPost('myexchange', { acer_type: that.data.currentTab }, function (res) {
+      that.setData({
+        exchangeList: res.data.acer_goods,
+        freeMoney: res.data.free_money
+      });
+    })
+  }
+
+
   // footerTap: app.footerTap
 })

@@ -1,4 +1,5 @@
 // pages/overflow/overflow.js
+var http = require('../../utils/httpHelper.js');
 Page({
 
   /**
@@ -8,6 +9,11 @@ Page({
     winHeight: "",//窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
+    banner:{}, //banner图
+    timeList:[], //抢购时间列表
+    goodsList:[], //抢购商品
+    page:1, //页码
+    limit:10, //每页显示条数
   },
   // 滚动切换标签样式
   switchTab: function (e) {
@@ -23,7 +29,8 @@ Page({
     else {
       this.setData({
         currentTab: cur
-      })
+      });
+      that.getPanicList();
     }
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
@@ -52,5 +59,37 @@ Page({
         });
       }
     });
+
+    // banner - 20180108 - LQ
+    http.httpPost('newspaper_banner',{},function(res){
+      that.setData({
+        banner: res.data.banner[0]['banner_image']
+      });
+    });
+
+    //抢购时间 - 20180108 - LQ
+    http.httpPost('newspaper_time',{},function(res){
+      that.setData({
+        timeList : res.data.time,
+        currentTab : res.data.time[0]['panic_id']
+      });
+    });
+
+    //抢购商品 - 20180108 - LQ
+    that.getPanicList();
   },
+
+  getPanicList:function(){
+    var condition = {
+      panic_id: that.data.currentTab,
+      page: that.data.page,
+      limit: that.data.limit
+    };
+    var that = this;
+    http.httpGet('overflow', condition, function (res) {
+      that.setData({
+        goodsList : res.data.goods_list
+      });
+    });
+  }
 })

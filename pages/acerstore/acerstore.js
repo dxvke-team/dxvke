@@ -26,10 +26,12 @@ var GetList = function (that) {
 Page({
   data: {
     hidden: true,
-    list: [],
+    list: [], //元宝商城列表
     scrollTop: 0,
     scrollHeight: 0,
-    acer:0,
+    acer:0, //会员元宝
+    page:1, //页码
+    limit:10 //每页显示数据条数
   },
   onLoad: function () {
     var that = this;
@@ -50,9 +52,7 @@ Page({
           acer: res.data.member_acer
         });
       });
-    }
-    
-    
+    };
   },
   onShow: function () {
     var that = this;

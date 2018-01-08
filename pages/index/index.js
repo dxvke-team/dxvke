@@ -10,8 +10,9 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    imgUrls: [],
-    goods:[],
+    imgUrls: [], //banner图
+    goods:[], //商品列表
+    goods_type:[], //商品分类
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
@@ -25,17 +26,27 @@ Page({
   },
   onLoad: function () {
     var that = this;
+
+      //首页banner - LQ
       http.httpPost("index_banner", {}, function (res) {
         that.setData({
           imgUrls: res.data.index_banner
         });
       });
 
+      //首页商品 - LQ
       http.httpPost('index_goods',{},function(res){
           that.setData({
               goods : res.data.goods
           });
       })
+
+      //首页分类 - 20180108 - LQ
+      http.httpPost('index_type',{},function(res){
+          that.setData({
+            goods_type: res.data.goods_type_up
+          });
+      });
   },
 
   getUserInfo: function(e) {
@@ -68,7 +79,7 @@ Page({
   },
   toClassify:function(e){
     wx.navigateTo({
-      url:"../classify/classify"
+      url: "../classify/classify?id="+e.currentTarget.id
     })
   },
   toAcerstore:function(e){

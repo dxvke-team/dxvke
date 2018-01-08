@@ -43,7 +43,6 @@ function Post (url,data, cb ){
 		success: (res) => {
 			typeof cb == "function" && cb(res.data,"");
       if (session_id == "" || session_id == null) {
-        console.log(res.data.session_id);
         wx.setStorageSync('PHPSESSID', res.data.session_id) //如果本地没有就说明第一次请求 把返回的session id 存入本地  
       }  
 		},

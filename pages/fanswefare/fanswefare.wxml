@@ -1,13 +1,10 @@
 <!--pages/fanswefare/fanswefare.wxml-->
 <view>
   <view>
-    <image src='../../images/superBenefit/first.jpg' class='nav'></image>
+    <image src='{{banner}}' class='nav'></image>
   </view>
   <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-    <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">价格优先</view>
-    <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">销量优先</view>
-    <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">元宝优先</view>
-    <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">时间优先</view>
+    <view wx:for='{{sortList}}' class="tab-item {{currentTab==item.id?'active':''}}" data-current="{{item.id}}" bindtap="swichNav">{{item.sort_name}}</view>
   </scroll-view>
   <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
     <swiper-item wx:for="{{[0,1,2,3]}}" wx:key="{{item}}">

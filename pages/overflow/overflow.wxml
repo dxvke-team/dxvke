@@ -1,13 +1,14 @@
 <!--pages/overflow/overflow.wxml-->
 <view class='overflow'>
   <view>
-    <image src='../../images/superBenefit/first.jpg' class='nav'></image>
+    <image src='{{banner}}' class='nav'></image>
   </view>
   <view class='tab'>
-    <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">11:00已开抢</view>
-    <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">11:00已开抢</view>
-    <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">11:00已开抢</view>
-    <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">11:00已开抢</view>
+    <view wx:for='{{timeList}}' class="tab-item {{currentTab==item.panic_id?'active':''}}" data-current="{{item.panic_id}}" bindtap="swichNav">{{item.start_time}}
+        <block wx:if='{{item.status == 1}}'>未开抢</block>
+        <block wx:elif='{{item.status == 2}}'>抢购中</block>
+        <block wx:elif='{{item.status == 3}}'>已开抢</block>
+    </view>
   </view>
   <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
     <swiper-item wx:for="{{[0,1,2,3]}}" wx:key="{{item}}">
