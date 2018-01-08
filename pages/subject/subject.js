@@ -1,13 +1,16 @@
 // pages/subject/subject.js
 // var app = getApp();
+var http = require('../../utils/httpHelper.js');
 Page({
   data: {
     winHeight: "",//窗口高度
-    currentTab: 0, //预设当前项的值
+    currentTab: 1, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     expertList: [{ //假数据
 
-    }]
+    }],
+    sortList:[], //排序方式 - LQ
+    goodsList:[], //商品列表
   },
   // 滚动切换标签样式
   switchTab: function (e) {
@@ -38,7 +41,7 @@ Page({
       })
     }
   },
-  onLoad: function () {
+  onLoad: function (options) {
     var that = this;
     //  高度自适应
     wx.getSystemInfo({
@@ -52,6 +55,26 @@ Page({
         });
       }
     });
+
+    //排序方式 - 20180108 - LQ
+    http.httpPost('nine_sort', {},function(res){
+      that.setData({
+        sortList: res.data.sorts_type
+      });
+      
+    });
+
+
+    //商品列表 - 20180108 - LQ
+    http.httpPost('nine', { sort: that.data.currentTaB, type_id:options.type_id},function(res){
+        that.setData({
+          goodsList: res.data.nine_products
+        });
+    });
+
   },
+
+
+  //排序方式获取
   // footerTap: app.footerTap
 })

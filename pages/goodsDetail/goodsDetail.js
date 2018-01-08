@@ -1,4 +1,7 @@
 // pages/goodsDeatail/goodsDetail.js
+var http = require('../../utils/httpHelper.js');
+var login = require('../../utils/login.js');
+const app = getApp();
 Page({
 
   /**
@@ -8,15 +11,33 @@ Page({
      list:4,
      show:false,
      showService:true,
-     showJuan:true
+     showJuan:true,
+     goodsDetail:{}, // 商品详情 - LQ
+     likeList:[], //猜你喜欢商品列表 - LQ
+     command:'', //淘口令
+     ewm:'', //客服二维码
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
+    var that = this;
+    that.setData({
       show:false
+    });
+
+    //获取商品详情 - 20180108 - LQ
+    http.httpPost('goodsDetail',{goods_id:options.id,type:options.id},function(res){
+      that.setData({
+        goodsDetail : res.data
+      });
+      //猜你喜欢商品列表 - 20180108 - LQ
+      http.httpPost('relevance', { id: that.data.goodsDetail.id }, function (res) {
+        that.setData({
+          likeList: res.data.goodsList
+        });
+      });
     });
   },
 
@@ -31,8 +52,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    //判断登录 - 20180108 - LQ
+    var that = this;
+    login.dologin(function (res) {
+      that.setData({
+        userInfo: res
+      });
+      app.globalData.userInfo = res;
+    });
   },
+
+
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -79,9 +109,16 @@ Page({
     })
   },
   service:function(){
-    this.setData({
-      showService: false
-    })
+    var that = this;
+    http.httpPost('serviceEwm',{},function(res){
+      that.setData({
+        ewm : res.data.ewm
+      });
+      that.setData({
+        showService: false
+      })
+    });
+    
   },
   close:function(e){
     this.setData({
@@ -89,9 +126,20 @@ Page({
     })
   },
   showJuan:function(e){
-    this.setData({
-      showJuan: false
-    })
+    var that = this;
+    var condition = {
+      click_url: e.currentTarget.dataset.click_url,
+      pict_url: e.currentTarget.dataset.picy_url,
+      title: e.currentTarget.dataset.title,
+    };
+    http.httpPost('command', condition,function(res){
+      that.setData({
+        command: res.data.command
+      });
+      that.setData({
+        showJuan: false
+      })
+    });
   },
   closeJuan:function(e){
     this.setData({

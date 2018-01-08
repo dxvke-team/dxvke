@@ -84,7 +84,7 @@
          <view>客服</view>
       </view>
       <view class='tab tab3'><view>浏览器领劵</view></view>
-      <view class='tab tab4' catchtap='showJuan'><view>淘口令领劵</view></view>
+      <view class='tab tab4' data-click_url='{{goodsDetail.click_url}}' data-pict_url='{{goodsDetail.pict_url}}' data-title='{{goodsDetail.title}}' catchtap='showJuan'><view>淘口令领劵</view></view>
   </view>
    <view class="model" hidden='{{showJuan}}'>
       <view class="model_bd">
@@ -92,7 +92,7 @@
       <view class="model_main">
         <view class="model_main_des">
           <view class="model_title">淘口令购买</view>
-          <input type="text"  class="word" id="kouling"></input>
+          <input type="text"  class="word" id="kouling" value='{{command}}'></input>
           <view class="des">在点击复制后，打开淘宝APP购买</view>
           <view class="des">若一键复制失败，请长按虚线内文字</view>
           <button class="m_btn"> 一键复制</button>
@@ -102,7 +102,7 @@
   </view> 
   <view class="model" hidden='{{showService}}'>
       <view class="model_bd"></view>
-      <image src="../../images/qr.jpg" alt="" class="model_main rq"></image>
+      <image src="{{ewm}}" alt="" class="model_main rq"></image>
       <image src="../../images/cancel_img.png" alt=""  class="cancel" catchtap='close'></image>
     </view>
 </view>

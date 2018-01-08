@@ -69,9 +69,16 @@ Page({
 
     //抢购时间 - 20180108 - LQ
     http.httpPost('newspaper_time',{},function(res){
+      var timeList = res.data.time;
+      var time = timeList[0]['panic_id'];
+      for (var index in timeList){
+        if (timeList[index]['status'] == 2){
+          var time = timeList[index]['panic_id'];
+        }
+      }
       that.setData({
-        timeList : res.data.time,
-        currentTab : res.data.time[0]['panic_id']
+        timeList: timeList,
+        currentTab : time
       });
     });
 
@@ -80,12 +87,12 @@ Page({
   },
 
   getPanicList:function(){
+    var that = this;
     var condition = {
       panic_id: that.data.currentTab,
       page: that.data.page,
       limit: that.data.limit
     };
-    var that = this;
     http.httpGet('overflow', condition, function (res) {
       that.setData({
         goodsList : res.data.goods_list
