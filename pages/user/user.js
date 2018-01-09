@@ -13,10 +13,24 @@ Page({
     var that = this;
     login.dologin(function(res){
       that.setData({
-        userInfo: res
-      });
-      app.globalData.userInfo = res;
-    });
+        userInfo: res.userInfo
+      })
+    })
+},
+toOrderList:function(e){
+  wx.navigateTo({
+    url: '../orderList/orderList',
+  })
+},
+  toAddressList:function(e){
+    wx.navigateTo({
+      url: '../addressList/addressList',
+    })
+  },
+  toMyTracks:function(e){
+    wx.navigateTo({
+      url: '../myTracks/myTracks',
+    })
   }
 
 })

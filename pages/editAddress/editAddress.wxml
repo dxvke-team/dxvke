@@ -1,0 +1,25 @@
+<!--pages/editAddress/editAddress.wxml-->
+<view class='editAddress'>
+  <view class='main'>
+    <view>姓名
+      <input></input>
+    </view>
+    <view>手机号码
+      <input></input>
+    </view>
+    <view class="section">
+      <view class="section__title">所在地区</view>
+      <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+        <view class="picker">
+          {{region[0]}} {{region[1]}} {{region[2]}}
+        </view>
+      </picker>
+    </view>
+    <view style='min-height:300rpx;'>
+      <textarea bindblur="bindTextAreaBlur" auto-height placeholder="详细地址"/>
+    </view>
+  </view>
+  <view class='all_btn'>
+    <button type="warn" bindtap="warn">保存</button>
+  </view>
+</view>
