@@ -2,11 +2,11 @@
 <view class='superBenefit'>
   <view>
     <view>
-      <image src='../../images/superBenefit/first.jpg' class="nav"></image>
+      <image src='{{nine_banner.image}}' class="nav"></image>
     </view>
     <view class='main'>
       <view class='main_top'>
-        <image src='{{nine_banner.image}}' class='sanjiao'></image>
+        <image src='../../images/superBenefit/sanjiao.png' class='sanjiao'></image>
         <view data-type='{{nine_banner.type_id}}' catchtap="toSubject" >
           <image src='../../images/superBenefit/youhui_bd_img.png' class='title_img'></image>
           <text class='title'>9.9专区</text>

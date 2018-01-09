@@ -1,0 +1,54 @@
+/* pages/sign/sign.wxss */
+.header_top{
+  position: relative;
+}
+.sign_bd{
+  width: 100%;
+  height: 528rpx;
+}
+.des{
+  width: 100%;
+  text-align: center;
+    color: #fff;
+    position: absolute;
+    top: 120rpx;
+}
+.sign_btn{
+  font-size: 32rpx; 
+}
+.tip1{
+  font-size: 28rpx;
+    color: rgb(255, 226, 228);
+    text-align: center;
+    margin-top: 90rpx;
+}
+.tip1 text{
+  font-size: 28rpx;
+    color: rgb(255, 233, 121);
+    font-weight: bold;
+}
+.tip2{
+  color: rgb(255, 174, 175);
+    font-size: 24rpx;
+    text-align: center;
+    margin-top: 5rpx;
+}
+.step_dot{
+  display: flex;
+  justify-content: space-between;
+  padding: 40rpx 50rpx 10rpx;
+}
+.step_day{
+   display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  padding: 0rpx 35rpx;
+  color: #ffaeaf;
+}
+.dot{
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: #ffaeaf;
+  display: inline-block;
+}

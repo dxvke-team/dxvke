@@ -39,6 +39,7 @@
             </scroll-view>
         </swiper-item>
     </swiper>
+     <view style='height:140rpx;'></view>
      <view  class='all_btn'>
        <button type="warn" bindtap="warn">确认提交</button>
      </view>

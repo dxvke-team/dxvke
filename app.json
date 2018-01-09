@@ -18,12 +18,17 @@
     "pages/orderList/orderList",
     "pages/addressList/addressList",
     "pages/editAddress/editAddress",
-    "pages/myTracks/myTracks"
+    "pages/myTracks/myTracks",
+    "pages/sign/sign",
+    "pages/infoCenter/infoCenter",
+    "pages/feedback/feedback",
+    "pages/shareList/shareList",
+    "pages/share/share"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#ff425f",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "洞悉微客",
-    "navigationBarTextStyle": "#ffffff"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "list": [

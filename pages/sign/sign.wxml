@@ -1,0 +1,41 @@
+<!--pages/sign/sign.wxml-->
+<view class='sign'>
+    <view class='header'>
+        <view class='header_top'>
+           <image src='../../images/user/sign_bd.png' class='sign_bd'></image>
+           <view class='des'>
+              <view class='sign_btn'>签到</view>
+              <view class='tip1'>今日签到可领取 <text>159</text> 元宝</view>
+              <view class='tip2'>连续签到有更多惊喜哦</view>
+              <view class='step'>
+                  <view class='step_dot'>
+                     <view class='dot'></view>
+                     <view class='dot'></view>
+                     <view class='dot'></view>
+                     <view class='dot'></view>
+                     <view class='dot'></view>
+                     <view class='dot'></view>
+                     <view class='dot'></view>
+                  </view>
+                  <view class='step_day'>
+                      <view class='day'>周日</view>
+                      <view class='day'>周一</view>
+                      <view class='day'>周二</view>
+                      <view class='day'>周三</view>
+                      <view class='day'>周四</view>
+                      <view class='day'>周五</view>
+                      <view class='day'>周六</view>                
+                  </view>
+                 
+              </view>
+              
+           </view>
+        </view>
+        
+        <view>
+        
+        </view>
+    
+    </view>
+
+</view>
