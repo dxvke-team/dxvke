@@ -1,41 +1,83 @@
 <!--pages/sign/sign.wxml-->
 <view class='sign'>
-    <view class='header'>
-        <view class='header_top'>
-           <image src='../../images/user/sign_bd.png' class='sign_bd'></image>
-           <view class='des'>
-              <view class='sign_btn'>签到</view>
-              <view class='tip1'>今日签到可领取 <text>159</text> 元宝</view>
-              <view class='tip2'>连续签到有更多惊喜哦</view>
-              <view class='step'>
-                  <view class='step_dot'>
-                     <view class='dot'></view>
-                     <view class='dot'></view>
-                     <view class='dot'></view>
-                     <view class='dot'></view>
-                     <view class='dot'></view>
-                     <view class='dot'></view>
-                     <view class='dot'></view>
-                  </view>
-                  <view class='step_day'>
-                      <view class='day'>周日</view>
-                      <view class='day'>周一</view>
-                      <view class='day'>周二</view>
-                      <view class='day'>周三</view>
-                      <view class='day'>周四</view>
-                      <view class='day'>周五</view>
-                      <view class='day'>周六</view>                
-                  </view>
-                 
-              </view>
-              
-           </view>
+  <view class='header'>
+    <view class='header_top'>
+      <image src='../../images/user/sign_bd.png' class='sign_bd'></image>
+      <view class='des'>
+        <view class='sign_btn' catchtap='sign' hidden='{{show}}'>签到</view>
+        <view class='sign_btn'  hidden='{{!show}}'>已签到</view>
+        <view class='tip1'>今日签到可领取
+          <text>159</text> 元宝</view>
+        <view class='tip2'>连续签到有更多惊喜哦</view>
+        <view class='step'>
+          <view class='step_dot'>
+            <view class='dot actives'></view>
+            <view class='dot'></view>
+            <view class='dot'></view>
+            <view class='dot'></view>
+            <view class='dot'></view>
+            <view class='dot'></view>
+            <view class='dot'></view>
+          </view>
+          <view class='line'></view>
+          <view class='step_day'>
+            <view class='day active'>周日</view>
+            <view class='day'>周一</view>
+            <view class='day'>周二</view>
+            <view class='day'>周三</view>
+            <view class='day'>周四</view>
+            <view class='day'>周五</view>
+            <view class='day'>周六</view>
+          </view>
+
         </view>
-        
-        <view>
-        
-        </view>
-    
+
+      </view>
+    </view>
+    <view class='header_bottom'>
+      <view class='header_bottom_1'>您已连续签到
+        <text>1</text> 天</view>
+      <view class='header_bottom_2'>元宝：
+        <text>300</text>
+      </view>
+      <button bindtap="toShareList" class='btn'>晒单赚元宝</button>
     </view>
 
+  </view>
+  <view>
+    <view class='title' catchtap='toAcerstore'>
+      <view class='title_main'>
+        <text>兑换记录</text>
+        <view class='title_left'>
+          <text>去元宝商城</text>
+          <image src='../../images/gt_white.png' class='icon'></image>
+        </view>
+      </view>
+    </view>
+    <view class='main'>
+      <view class='empty' hidden='true'>
+        <image src='../../images/empty_img.png'></image>
+        <view>暂时没有兑换记录~</view>
+      </view>
+      <view class='list'>
+        <view class="item-ans">
+          <view class="avatar">
+            <image class="img" src="http://ookzqad11.bkt.clouddn.com/avatar.png"></image>
+          </view>
+          <view class="expertInfo">
+            <view class="name">名字</view>
+            <view class='date'>日期：2017-12-13 13:12:45</view>
+          </view>
+        </view>
+        <view class='more' catchtap='toExchangeList'>点击此处查看更多记录</view>
+      </view>
+    </view>
+  </view>
+   <view class="model" hidden='{{showModel}}'>
+      <view class="model_bd"></view>
+      <image src="../../images/model_bd.png" alt="" class="model_main rq"></image>
+       <view class='big'>恭喜您，获得 <text>100</text> 个元宝</view>
+       <view class='small'>连续签到有更多奖励哦</view>
+      <image src="../../images/cancel_img.png" alt=""  class="cancel" catchtap='close'></image>
+    </view>
 </view>

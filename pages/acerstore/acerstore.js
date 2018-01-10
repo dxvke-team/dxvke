@@ -92,5 +92,10 @@ Page({
     wx.navigateTo({
       url: '../exchangeList/exchangeList',
     })
+  },
+  toExchange:function(){
+    wx.navigateTo({
+      url: '../exchange/exchange',
+    })
   }
 })  

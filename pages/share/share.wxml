@@ -1,7 +1,7 @@
 <!--pages/share/share.wxml-->
 <view class='share'>
    <view class='main'>
-      <textarea bindblur="bindTextAreaBlur" placeholder="说说你的晒单感受吧~" />
+      <textarea placeholder="说说你的晒单感受吧~"/>
       <view>
          <view style='display:inline-block;position:relative;' wx:for="{{imgs}}" wx:key="{{imgs}}">
            <image class='img' src='imgs'></image>
