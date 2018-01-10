@@ -1,4 +1,5 @@
 // pages/orderList/orderList.js
+var http = require('../../utils/httpHelper.js');
 Page({
 
   /**
@@ -11,8 +12,7 @@ Page({
     expertList: [{ //假数据
 
     }],
-    exchangeList: [], //兑换记录列表
-    freeMoney: 0, //累计免单金额
+    orderList: [], //兑换记录列表 - LQ
   },
   // 滚动切换标签样式
   switchTab: function (e) {
@@ -30,7 +30,9 @@ Page({
       that.setData({
         currentTab: cur
       });
-      console.log(that.data.currentTab)
+      if (cur > 0){
+        that.getOrderList(cur);
+      }
     }
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
@@ -61,4 +63,13 @@ Page({
     });
   },
 
+  //查询订单列表 - 20180109 - LQ
+  getOrderList:function(order_type){
+    var that = this;
+    http.httpPost('myOrder', {back_status:order_type},function(res){
+      that.setData({
+        orderList: res.data.order_list
+      });
+    });
+  }
 })

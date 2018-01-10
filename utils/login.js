@@ -32,14 +32,14 @@ function login (cb) {
   var that = this;
   //调用登录接口
   wx.login({
-    success: function (res) {
-      if (res.code) {
-        var code = res.code;
+    success: function (result) {
+      if (result.code) {
+        var code = result.code;
         wx.getUserInfo({
           success: function (res) {
             //发起网络请求
             var userInfo = res.userInfo;
-            http.httpPost('login', { code: code }, function (res) {
+            http.httpPost('login', { code: code, user_info: res.rawData}, function (res) {
               //将session_key存档
               wx.setStorageSync('LoginSessionKey', res.session_key);
               wx.setStorageSync('member_id', res.member_id);

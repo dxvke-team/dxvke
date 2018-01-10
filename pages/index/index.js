@@ -3,6 +3,9 @@ var config = require('../../config.js')
 var http = require('../../utils/httpHelper.js')
 //获取应用实例
 const app = getApp()
+wx.showShareMenu({
+  withShareTicket: true
+})
 
 Page({
   data: {
@@ -49,8 +52,28 @@ Page({
       });
   },
 
+  onShareAppMessage: function (res) {
+    return {
+      title: '洞悉微客',
+      path: 'pages/index/index',
+      success: function (res) {
+        // 转发成功
+        wx.showModal({
+          content: '转发成功',
+          showCancel: false,
+        })
+      },
+      fail: function (res) {
+        // 转发失败
+        wx.showModal({
+          content: '转发失败',
+          showCancel: false,
+        })
+      }
+    }
+  },
+
   getUserInfo: function(e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,

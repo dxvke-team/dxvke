@@ -13,66 +13,14 @@
 
   <view class='navigate'>
      <view class='width_navigate'> 
-      <view class='navigate_child' id='1' catchtap="toClassify">
+
+      <view wx:for='{{goods_type}}' class='navigate_child' id='{{item.id}}' catchtap="toClassify">
         <view style="width:100%;">
-          <image src="../../images/index/hot.png"></image>
+          <image src="{{item.image_url}}"></image>
         </view>
-        <view class="navigate_name">热门</view>
+        <view class="navigate_name">{{item.cate_name}}</view>
       </view>
-      <view class='navigate_child'>
-        <view style="width:100%;">
-          <image src="../../images/index/home.png"></image>
-        </view>
-        <view class="navigate_name">家居</view>
-      </view>
-      <view class='navigate_child'>
-        <view style="width:100%;">
-          <image src="../../images/index/costume.png"></image>
-        </view>
-        <view class="navigate_name">服饰</view>
-      </view>
-      <view class='navigate_child'>
-        <view style="width:100%;">
-          <image src="../../images/index/bussiness.png"></image>
-        </view>
-        <view class="navigate_name">办公文体</view>
-      </view>
-      <view class='navigate_child'>
-        <view style="width:100%;">
-          <image src="../../images/index/numerical.png"></image>
-        </view>
-        <view class="navigate_name">数码家电</view>
-      </view>
-      <view class='navigate_child'>
-        <view style="width:100%;">
-          <image src="../../images/index/beauty.png"></image>
-        </view>
-        <view class="navigate_name">美妆</view>
-      </view>
-      <view class='navigate_child'>
-        <view style="width:100%;">
-          <image src="../../images/index/mom.png"></image>
-        </view>
-        <view class="navigate_name">母婴</view>
-      </view>
-      <view class='navigate_child'>
-        <view style="width:100%;">
-          <image src="../../images/index/cate.png"></image>
-        </view>
-        <view class="navigate_name">美食</view>
-      </view>
-      <view class='navigate_child'>
-        <view style="width:100%;">
-          <image src="../../images/index/sport.png"></image>
-        </view>
-        <view class="navigate_name">运动户外</view>
-      </view>
-      <view class='navigate_child'>
-        <view style="width:100%;">
-          <image src="../../images/index/car.png"></image>
-        </view>
-        <view class="navigate_name">车品周边</view>
-      </view>
+
      </view> 
   </view>
 

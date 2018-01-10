@@ -9,11 +9,11 @@ Page({
     hasUserInfo: false,
   },
 
-  onShow: function () {
+  onLoad: function () {
     var that = this;
     login.dologin(function(res){
       that.setData({
-        userInfo: res.userInfo
+        userInfo: res
       })
     })
 },

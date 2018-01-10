@@ -68,15 +68,11 @@ Page({
 
     //商品列表 - 20180108 - LQ
     http.httpPost('nine', { sort: that.data.currentTab, type_id:options.type_id},function(res){
+        console.log(res);
         that.setData({
           goodsList: res.data.nine_products
         });
     });
-
-    console.log(that.data.goodsList);
   },
-
-
-  //排序方式获取
   // footerTap: app.footerTap
 })

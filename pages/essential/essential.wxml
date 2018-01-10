@@ -1,7 +1,7 @@
 <!--pages/essential/essential.wxml-->
 <view class='essential'>
   <view>
-    <image src='../../images/superBenefit/first.jpg' class='nav'></image>
+    <image src='{{banner}}' class='nav'></image>
   </view>
   <view class='title'>
      <image src='../../images/superBenefit/essential_img.png'></image>
