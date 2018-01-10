@@ -1,7 +1,7 @@
 <!--pages/subject/subject.wxml-->
 <view class='subject'>
   <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-    <view wx:for='{{sortList}}' class="tab-item {{currentTab==item.id?'active':''}}" data-current="{{item.id}}" bindtap="swichNav">{{item.sort_name}}</view>
+    <view wx:for='{{sortList}}' wx:key='index' class="tab-item {{currentTab==item.id?'active':''}}" data-current="{{item.id}}" bindtap="swichNav">{{item.sort_name}}</view>
   </scroll-view>
   <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
     <swiper-item wx:for="{{[0,1,2,3]}}" wx:key="{{item}}">

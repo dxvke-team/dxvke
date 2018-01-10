@@ -32,12 +32,12 @@
   </view>
   <view>
     <view>
-      <image src='../../images/superBenefit/second.jpg' class="nav"></image>
+      <image src='{{nineteen_banner.image}}' class="nav"></image>
     </view>
     <view class='main'>
       <view class='main_top'>
         <image src='../../images/superBenefit/sanjiao.png' class='sanjiao'></image>
-        <view catchtap="toSubject">
+        <view data-type='{{nine_banner.type_id}}' catchtap="toSubject">
           <image src='../../images/superBenefit/youhui_bd2_img.png' class='title_img'></image>
           <text class='title'>19.9专区</text>
           <view class='right'>
@@ -62,7 +62,7 @@
   </view>
   <view>
     <view>
-      <image src='../../images/superBenefit/three.jpg' class="nav"></image>
+      <image src='{{discount_banner.image}}' class="nav"></image>
     </view>
     <view class='main'>
       <view class='main_top'>
@@ -92,7 +92,7 @@
   </view>
   <view>
     <view>
-      <image src='../../images/superBenefit/four.jpg' class="nav"></image>
+      <image src='{{season_banner.image}}' class="nav"></image>
     </view>
     <view class='main'>
       <view class='main_top'>

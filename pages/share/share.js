@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-      imgs:[]
+      imgs:[],
+      content:"", //晒单感受
+      orderNum:"", //订单号
   },
   chooseImageTap:function(e){
     let self = this;
@@ -15,68 +17,64 @@ Page({
       success: function (res) {
         if (!res.cancel) {
           if (res.tapIndex == 0) {
-            self.chooseWxImage('album')
+            self.chooseWxImage('album',function(result){
+              self.setData({
+                imgs: result
+              });
+              console.log(self.data.ims);
+            })
           } else if (res.tapIndex == 1) {
-            self.chooseWxImage('camera')
+            self.chooseWxImage('camera', function (result) {
+              self.setData({
+                imgs : result
+              });
+            })
           }
         }
       }
     })
   },
-  chooseWxImage: function (type) {
+  chooseWxImage: function (type,cb) {
+    var session_id = wx.getStorageSync('PHPSESSID');//本地取存储的sessionID  
+    if (session_id != "" && session_id != null) {
+      var header = { 'content-type': 'multipart/form-data', 'Cookie': 'PHPSESSID=' + session_id }
+    } else {
+      var header = { 'content-type': 'multipart/form-data' }
+    } 
     let self = this;
     wx.chooseImage({
-      count:1,//限制上传图片的数量，默认9张
+      count:9,//限制上传图片的数量，默认9张
       sizeType: ['original', 'compressed'],
       sourceType: [type],
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = [];
-        tempFilePaths.push(res.tempFilePaths)
-
-        var imgs = self.data.imgs
-        console.log(tempFilePaths[0])
-        wx.uploadFile({
-          url: 'http://192.168.1.101/api/upload', //接口地址
-          filePath: tempFilePaths,
-          name: "images",
-          // formData:{
-          //   images:tempFilePaths[0]
-          // },
-          success: function (res) {
-            var data = res.data
-            console.log(data)
-          },
-
-        })
-
-
-
-
-
-
-
-
-
-
-
-
-        // var imgs = self.data.imgs;
-        // for (var i = 0; i < tempFilePaths.length; i++) {
-        //   if (imgs.length >= 9) {
-        //     self.setData({
-        //       imgs: imgs
-        //     });
-        //     return false;
-        //   } else {
-        //     imgs.push(tempFilePaths[i]);
-        //   }
-        // }
-        // console.log(imgs);
-        // self.setData({
-        //   imgs: imgs
-        // });
+        var images = res.tempFilePaths;
+        typeof cb == "function" && cb(images);
       }
     })
+  },
+
+  //删除图片
+  delImageTap : function(e){
+    var that = this;
+    var imgsIndex = e.currentTarget.dataset.id;
+    var imgs = that.data.imgs;
+    imgs.splice(imgsIndex,1);
+    that.setData({
+      imgs : imgs
+    });
+  },
+  
+
+  formSubmit :function(e){
+    var content = e.detail.value.content;
+    var orderNum = e.detail.value.orderNum;
+    if (content == '' || content == null){
+      wx.showModal({
+        content: '请输入晒单评价',
+        showCancel : false
+      })
+    }
   }
+
 })

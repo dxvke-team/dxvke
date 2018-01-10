@@ -1,4 +1,5 @@
 // pages/searchPage/searchPage.js
+var http = require('../../utils/httpHelper.js');
 Page({
 
   /**
@@ -12,7 +13,11 @@ Page({
     scrollLeft: 0, //tab标题的滚动条位置
     expertList: [{ //假数据
 
-    }]
+    }],
+    hotWords: [], //热门搜索词 - LQ
+    historyWords: [], //历史搜索词 - LQ
+    sortList: [], //排序方式 - LQ
+    goodsList: [], //搜索结构 - LQ
   },
   toClose:function(e){
     wx.navigateBack();
@@ -60,14 +65,52 @@ Page({
         });
       }
     });
+
+    // 热门搜索词 - 20180109 - LQ
+    http.httpPost('searchHot',{},function(res){
+      that.setData({
+        hotWords : res.data.hot 
+      });
+    });
+
+    // 历史搜索词 - 20180109 - LQ
+    http.httpPost('searchPage',{},function(res){
+      that.setData({
+        historyWords: res.data.history
+      });
+    });
+
+    //搜索结果排序方式 - 20180109 - LQ
+    http.httpPost('serrchSort',{},function(res){
+      that.setData({
+        sortList : res.data.sorts_type,
+        currentTab: res.data.sorts_type[0]['id']
+      });
+    });
   },
+  // 清空搜索历史 - 20180109 - LQ
+  clearHistory:function(){
+    http.httpPost('delSearch',{},function(){});
+  },
+
   // 获取焦点事件
   bindfocus:function(e){
     this.setData({ show: true });
   },
   // 开始搜索
   bindconfirm:function(e){
-    this.setData({ show: false });
+    var that = this;
+    //搜索商品 - 20180109 - LQ
+    var searchWord = e.detail.value;
+    http.httpPost('doSearch',{
+      keywords : searchWord,
+      sort: 　that.data.currentTab
+    },function(res){
+      that.setData({
+        goodsList: res.data.product_list
+      });
+      that.setData({ show: false });
+    });
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

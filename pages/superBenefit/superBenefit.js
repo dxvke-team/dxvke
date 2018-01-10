@@ -39,15 +39,15 @@ Page({
 
     http.httpPost('c_index_season', {}, function (res) {
       that.setData({
-        nineteen_banner: res.data.type,
-        nineteen_goods: res.data.goods
+        season_banner: res.data.type,
+        season_goods: res.data.goods
       });
     });
 
     http.httpPost('c_index_discount', {}, function (res) {
       that.setData({
-        nineteen_banner: res.data.type,
-        nineteen_goods: res.data.goods
+        discount_banner: res.data.type,
+        discount_goods: res.data.goods
       });
     });
 

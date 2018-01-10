@@ -1,5 +1,5 @@
 var http = require('../../utils/httpHelper.js')
-
+var login = require('../../utils/login.js');
 // pages/acerstore/acerstore.js
 var page = 1;
 
@@ -35,6 +35,8 @@ Page({
   },
   onLoad: function () {
     var that = this;
+
+
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -47,11 +49,23 @@ Page({
     //加载元宝数据与元宝商品数据 - 20170105 - LQ
     if (member_id > 0){
       http.httpPost('member_acer', {}, function (res) {
-        console.log(res);
         that.setData({
           acer: res.data.member_acer
         });
       });
+    }else{
+      wx.showModal({
+        title: '',
+        content: '您需要到个人中心进行登录',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../user/user',
+            })
+          }
+        }
+      })
     };
   },
   onShow: function () {
