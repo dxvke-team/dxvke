@@ -31,6 +31,31 @@ toOrderList:function(e){
     wx.navigateTo({
       url: '../myTracks/myTracks',
     })
+  },
+  toExchangeList:function(e){
+    wx.navigateTo({
+      url: '../exchangeList/exchangeList',
+    })
+  },
+  toSign:function(e){
+    wx.navigateTo({
+      url: '../sign/sign',
+    })
+  },
+  toInfoCenter:function(e){
+    wx.navigateTo({
+      url: '../infoCenter/infoCenter',
+    })
+  },
+  toFeedback:function(e){
+    wx.navigateTo({
+      url: '../feedback/feedback',
+    })
+  },
+  toShareList:function(e){
+    wx.navigateTo({
+      url: '../shareList/shareList',
+    })
   }
 
 })
