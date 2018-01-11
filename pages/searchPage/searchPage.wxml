@@ -10,35 +10,19 @@
   <view class='search_history' hidden="{{!show}}">
     <text class='title'>热门搜索</text>
     <view class='keyword'>
-      <view catchtap='bindconfirm'>冬装</view>
-      <view>雪地靴</view>
-      <view>毛衣</view>
-      <view>火锅</view>
-      <view>冬装</view>
-      <view>雪地靴</view>
-      <view>毛衣</view>
-      <view>火锅</view>
+      <view wx:for='{{hotWords}}' catchtap='bindconfirm'>{{item.keywords}}</view>
     </view>
     <view style='position: relative;'>
       <text class='title'>历史搜索</text>
-      <image src="../../images/search/trash_litter.png" class='trash'></image>
+      <image src="../../images/search/trash_litter.png" bindtap='clearHistory' class='trash'></image>
     </view>
     <view class='keyword'>
-      <view catchtap='bindconfirm'>冬装</view>
-      <view>雪地靴</view>
-      <view>毛衣</view>
-      <view>火锅</view>
-      <view>冬装</view>
-      <view>雪地靴</view>
-      <view>毛衣</view>
-      <view>火锅</view>
+      <view wx:for='{{historyWords}}' wx:key='key' catchtap='bindconfirm'>{{item.keywords}}</view>
     </view>
   </view>
   <view hidden='{{show}}'>
     <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-      <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">综合排序</view>
-      <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">销量优先</view>
-      <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">价格优先</view>
+      <view wx:for="{{sortList}}" wx:key='key' class="tab-item {{currentTab==item.id?'active':''}}" data-current="{{item.id}}" bindtap="swichNav">{{item.sort_name}}</view>
     </scroll-view>
     <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
       <swiper-item wx:for="{{[0,1,2]}}" wx:key="{{item}}">

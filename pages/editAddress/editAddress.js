@@ -7,22 +7,26 @@ Page({
    */
   data: {
     addressInfo:{}, //地址详细信息 - LQ
+    addressArray:[],
     addressId : '', //地址id
   },
   onLoad:function(options){
     var that = this;
-    http.httpGet('updateAddress',{address_id:options.id},function(res){
-      console.log(res);
-      that.setData({
-        addressInfo : res.data.address_info,
-        addressId: options.id
+    if (options.id > 0){
+      http.httpGet('updateAddress', { address_id: options.id }, function (res) {
+        console.log(res);
+        that.setData({
+          addressInfo: res.data.address_info,
+          addressArray: res.data.address_info.address_array,
+          addressId: options.id
+        });
       });
-    });
+    }
+    
   },
   bindRegionChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      region: e.detail.value
+      addressArray: e.detail.value
     })
   },
 
@@ -35,6 +39,12 @@ Page({
     var province = e.detail.value.province[0] + ' ' + e.detail.value.province[1] + ' ' + e.detail.value.province[2];
     var telephone = e.detail.value.telephone;
 
+    if (address_id > 0){
+      var action = 'updateAddress';
+    }else{
+      var action = 'addAddress';
+    }
+    
     http.httpPost('updateAddress',{
       address_id : address_id,
       person_name : person_name,

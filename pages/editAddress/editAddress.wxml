@@ -10,9 +10,9 @@
       </view>
       <view class="section">
         <view class="section__title">所在地区</view>
-        <picker mode="region" name='province' bindchange="bindRegionChange" value="{{addressInfo.address_array}}">
+        <picker mode="region" name='province' bindchange="bindRegionChange" value='{{addressArray}}' >
           <view class="picker">
-            {{addressInfo.address_array}}
+            {{addressArray}}
           </view>
         </picker>
       </view>

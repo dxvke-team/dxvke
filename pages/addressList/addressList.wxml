@@ -16,6 +16,6 @@
     </view>
   </view>
   <view class='all_btn'>
-    <button type="warn" bindtap="warn">添加地址</button>
+    <button bindtap="toAddress">添加地址</button>
   </view>
 </view>

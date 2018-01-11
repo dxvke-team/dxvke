@@ -9,7 +9,7 @@ Page({
     focus:true,
     show:true,
     winHeight: "",//窗口高度
-    currentTab: 0, //预设当前项的值
+    currentTab: 9, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     expertList: [{ //假数据
 
@@ -17,7 +17,7 @@ Page({
     hotWords: [], //热门搜索词 - LQ
     historyWords: [], //历史搜索词 - LQ
     sortList: [], //排序方式 - LQ
-    goodsList: [], //搜索结构 - LQ
+    goodsList: [], //搜索结果 - LQ
   },
   toClose:function(e){
     wx.navigateBack();
@@ -82,6 +82,7 @@ Page({
 
     //搜索结果排序方式 - 20180109 - LQ
     http.httpPost('serrchSort',{},function(res){
+      console.log(res);
       that.setData({
         sortList : res.data.sorts_type,
         currentTab: res.data.sorts_type[0]['id']
@@ -90,7 +91,18 @@ Page({
   },
   // 清空搜索历史 - 20180109 - LQ
   clearHistory:function(){
-    http.httpPost('delSearch',{},function(){});
+    var that = this;
+    http.httpPost('delSearch',{},function(res){
+      if(res.code == 200){
+        that.setData({
+          historyWords : []
+        });
+      }
+      else
+      {
+        return false;
+      }
+    });
   },
 
   // 获取焦点事件
