@@ -1,7 +1,9 @@
 /* pages/exchange/exchange.wxss */
-.exchange{
-   padding: 20rpx 30rpx 0;
-   background-color: white;
+.goods{
+  padding: 20rpx 30rpx 0;
+  background-color: white;
+  border-top: 1rpx solid #f4f4f4;
+  margin-bottom: 20rpx;
 }
 .des{
   margin: 0 auto;
@@ -73,4 +75,55 @@
   background: #e1e1e1;
   color: #878787;
   text-align: center;
+}
+.userInfo{
+  padding: 30rpx 0;
+}
+.tel{
+  border: 1rpx solid rgb(177, 177, 177);
+    border-radius: 5rpx;
+    width: 450rpx;
+    margin: 20rpx 0px 10rpx;
+    font-size: 24rpx;
+    padding: 0 20rpx;
+}
+.direction{
+  background-color: white;
+  padding: 20rpx 30rpx;
+}
+.title{
+  font-size: 28rpx;
+  color: #333;
+  padding: 20rpx 0;
+  font-weight: bolder;
+}
+.brief{
+  font-size: 24rpx;
+  color: rgb(153, 153, 153)
+}
+.name{
+  font-size: 28rpx;
+  color: #333;
+}
+.address{
+  font-size: 24rpx;
+  border: 1rpx solid rgb(244, 244, 244);
+  width: 580rpx;
+  margin: 15rpx auto 0;
+  padding: 26rpx 30rpx;
+  display: flex;
+  align-items: flex-start;
+}
+.default{
+   width: 60rpx;
+  margin-right: 24rpx;
+  padding: 1rpx 0rpx;
+  color: #ff425f;
+  border: 1rpx solid #ff425f;
+  text-align: center;
+  border-radius: 5rpx;
+}
+.site{
+  color: rgb(102, 102, 102);
+  margin-bottom: 10rpx;
 }

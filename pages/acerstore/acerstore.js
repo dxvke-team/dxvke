@@ -54,18 +54,18 @@ Page({
         });
       });
     }else{
-      wx.showModal({
-        title: '',
-        content: '您需要到个人中心进行登录',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            wx.switchTab({
-              url: '../user/user',
-            })
-          }
-        }
-      })
+      // wx.showModal({
+      //   title: '',
+      //   content: '您需要到个人中心进行登录',
+      //   showCancel: false,
+      //   success: function (res) {
+      //     if (res.confirm) {
+      //       wx.switchTab({
+      //         url: '../user/user',
+      //       })
+      //     }
+      //   }
+      // })
     };
   },
   onShow: function () {

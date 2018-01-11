@@ -23,9 +23,44 @@
          <view class='btn' catchtap='add'>+</view>
         </view>
       </view>
-      <view>
-      
+      <view class='userInfo'>
+         <view hidden='true'>
+              <view class='setNum_title'>请输入您要充值的手机号</view>
+              <input class='tel' type="number" maxlenght='11'></input>
+         </view>
+         <view hidden='true'>
+              <view class='setNum_title'>请输入您要提现的支付宝账号</view>
+              <view style='display:flex;margin:30rpx 0 10rpx;'>
+                <image src='../../images/alipay_img.png' style='width:138rpx;height:48rpx;'></image>
+                <input class='tel' style='margin:0 0 0 20rpx;'></input>
+              </view>
+         </view>
+         <view>
+              <view style='display:flex;justify-content: space-between;align-items: center;'>
+                 <view style='font-size:28rpx;color:#333;'>配送至：</view>
+                 <view style='display:flex;align-items: center;height:60rpx;' catchtap='toAddressList'>
+                     <view style='font-size:24rpx;color:#999;'>修改地址</view>
+                     <image src='../../images/gt_white.png' style='width:24rpx;height:24rpx;margin:4rpx 0 0 10rpx;'></image>
+                 </view>
+              </view>
+              <view class='address'>
+                 <view class='default'>默认</view>
+                 <view>
+                    <view class='site'>浙江省，杭州市，滨江区某某小区</view>
+                    <view style='color:#999;'>李静 13214325343</view>
+                 </view>
+              </view>
+         </view>
       </view>
+   </view>
+   <view class='direction'>
+       <view class='title'>兑换说明：</view>
+       <view class='brief'>成功提交后奖品将在1-3个工作日内发到提交账户内，请耐心等待并在我的兑换内进行查看</view>
+       <view class='title'>商品详情</view>
+       <view class='name'>商品名称</view>
+       <view>
+          <image src='../../images/product.png' style="width:100%;margin-top:20rpx;" mode="widthFix"></image>
+       </view>
    </view>
    <view>
    

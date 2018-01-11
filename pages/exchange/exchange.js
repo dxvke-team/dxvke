@@ -23,5 +23,10 @@ Page({
     this.setData({
       num:num
     })
+  },
+  toAddressList:function(){
+    wx.navigateTo({
+      url: '../addressList/addressList',
+    })
   }
 })
