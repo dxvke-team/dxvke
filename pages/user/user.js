@@ -18,8 +18,10 @@ Page({
     })
 },
 toOrderList:function(e){
+  console.log(e)
+  var type = e.currentTarget.dataset.type
   wx.navigateTo({
-    url: '../orderList/orderList',
+    url: '../orderList/orderList?type='+type,
   })
 },
   toAddressList:function(e){

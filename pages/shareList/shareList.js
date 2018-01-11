@@ -65,7 +65,7 @@ Page({
         });
       }
     });
-    that.orderSquare();
+    that.myOrder();
   },
   toShare:function(e){
     wx.navigateTo({
@@ -76,12 +76,12 @@ Page({
   myOrder:function(){
     var that = this;
     http.httpPost('myShareOrder',{},function(res){
+      console.log(res.data.my_order)
       that.setData({
         myOrderList: res.data.my_order
       });
     });
   },
-
   //晒单广场 - 20180111 - LQ
   orderSquare:function(){
     var that = this;

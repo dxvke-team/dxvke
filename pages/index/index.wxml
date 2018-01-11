@@ -51,42 +51,6 @@
         
       </view>
     </view>
-    <view class='product_child'>
-      <image src='../../images/product.png'></image>
-      <view class='product_name'>
-        <text class='name_text break'>产品介绍产品介绍产品介绍产品介绍产品介绍</text>
-        <view style="margin: 15rpx 0;">
-            <text class="juan_style">
-               <text class="juan_style_left">券</text>
-               <text class="juan_style_right">100元</text>
-            </text>
-            <text class="return_num_style">返{{goods.fans_acer}}元宝</text>
-        </view>
-        <view>
-           <text class='price'>￥</text><text class='rmb'>88</text><text class='corner'>.8</text>
-           <text class='volumn'>513件已售</text>
-        </view>
-        
-      </view>
-    </view>
-    <view class='product_child'>
-      <image src='../../images/product.png'></image>
-      <view class='product_name'>
-        <text class='name_text break'>产品介绍产品介绍产品介绍产品介绍产品介绍</text>
-        <view style="margin: 15rpx 0;">
-            <text class="juan_style">
-               <text class="juan_style_left">券</text>
-               <text class="juan_style_right">100元</text>
-            </text>
-            <text class="return_num_style">返{{goods.fans_acer}}元宝</text>
-        </view>
-        <view>
-           <text class='price'>￥</text><text class='rmb'>88</text><text class='corner'>.8</text>
-           <text class='volumn'>513件已售</text>
-        </view>
-        
-      </view>
-    </view>
   </view>
 
 </view>

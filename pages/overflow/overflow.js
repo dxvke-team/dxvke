@@ -30,7 +30,7 @@ Page({
       this.setData({
         currentTab: cur
       });
-      that.getPanicList();
+      this.getPanicList();
     }
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。

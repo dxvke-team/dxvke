@@ -1,7 +1,7 @@
 <!--pages/addressList/addressList.wxml-->
 <view class='addressList'>
   <view>
-    <view wx:for='{{addressList}}' class='list'>
+    <view wx:for='{{addressList}}' class='list' wx:key='{{item}}'>
       <view class='list_des'>
         <text class='name'>{{item.person_name}}</text>
         <text class='tell'>{{item.telephone}}</text>

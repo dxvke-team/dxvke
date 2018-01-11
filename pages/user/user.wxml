@@ -6,7 +6,7 @@
   <image class='acer' src='../../images/acer.png'></image>
   <text class='acer_number'>88</text>
 </view>
-<view class='my_order' catchtap='toOrderList'>
+<view class='my_order' catchtap='toOrderList' data-type='0'>
   <view class='my_order_child'>我的订单</view>
   <view class='total_order'>
     查看全部
@@ -14,19 +14,19 @@
   </view>
 </view>
 <view class='order_type'>
-  <view class='order_type_child_first' catchtap='toOrderList'>
+  <view class='order_type_child_first' data-type='0' catchtap='toOrderList'>
     <image src='../../images/user/addOrder.png'></image>
     <text>添加</text>
   </view>
-  <view class='order_type_child' catchtap='toOrderList'>
+  <view class='order_type_child' catchtap='toOrderList' data-type='1'>
     <image src='../../images/user/allOrder.png'></image>
     <text>全部</text>
   </view>
-  <view class='order_type_child' catchtap='toOrderList'>
+  <view class='order_type_child' catchtap='toOrderList' data-type='2'>
     <image src='../../images/user/waitOrder.png'></image>
     <text>待返</text>
   </view>
-  <view class='order_type_child_last' style='float:right' catchtap='toOrderList'>
+  <view class='order_type_child_last' style='float:right' catchtap='toOrderList' data-type='3'>
     <image src='../../images/user/overOrder.png'></image>
     <text>已返</text>
   </view>

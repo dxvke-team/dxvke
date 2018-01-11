@@ -12,6 +12,11 @@ Page({
       content:"", //晒单感受
       orderNum:"", //订单号
   },
+  onLoad:function(e){
+     this.setData({
+       orderNum:e.num
+     })
+  },
   chooseImageTap:function(e){
     let self = this;
     wx.showActionSheet({
