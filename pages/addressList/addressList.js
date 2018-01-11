@@ -54,5 +54,12 @@ Page({
         addressList: addressList
       });
     });
+  },
+
+  //添加地址 - 20180111 - LQ
+  toAddress:function(){
+    wx.navigateTo({
+      url: '../editAddress/editAddress',
+    })
   }
 })

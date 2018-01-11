@@ -50,7 +50,7 @@ Page({
         discount_goods: res.data.goods
       });
     });
-
+    console.log(that.data);
   },
 
 
