@@ -10,8 +10,8 @@
       <view class='setting'>
         <label class="radio">
           <radio value="1" checked="{{checked}}" color='#ff425f' />设为默认</label>
-        <text data-id='25' catchtap='delAddress'>删除</text>
-        <text catchtap='toEdit'>编辑</text>
+        <text data-id='{{item.address_id}}' catchtap='delAddress'>删除</text>
+        <text data-id='{{item.address_id}}' catchtap='toEdit'>编辑</text>
       </view>
     </view>
   </view>

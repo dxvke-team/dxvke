@@ -1,4 +1,7 @@
 // pages/share/share.js
+const app = getApp();
+var http = require('../../utils/httpHelper.js');
+var config = require('../../config.js');
 Page({
 
   /**
@@ -21,7 +24,6 @@ Page({
               self.setData({
                 imgs: result
               });
-              console.log(self.data.ims);
             })
           } else if (res.tapIndex == 1) {
             self.chooseWxImage('camera', function (result) {
@@ -67,6 +69,7 @@ Page({
   
 
   formSubmit :function(e){
+    var that = this;
     var content = e.detail.value.content;
     var orderNum = e.detail.value.orderNum;
     if (content == '' || content == null){
@@ -74,7 +77,52 @@ Page({
         content: '请输入晒单评价',
         showCancel : false
       })
-    }
+    };
+
+    if(orderNum == '' || orderNum == null){
+      wx.showModal({
+        content: '请输入订单号',
+        showCancel: false
+      })
+    };
+
+    //生成订单 - 20180110 - LQ
+
+    var imageData = {
+      url: config.UPLOAD_URL,
+      path: that.data.imgs
+    };
+
+    //上传图片
+    app.uploadimg(imageData,function(res){
+      http.httpPost('shareOrder_front',{
+        evaluate : content,
+        order_num : orderNum,
+        evaluate_url: JSON.stringify(res)
+      },function(result){
+        if(result.code == 200){
+          wx.showModal({
+            content: result.data.message,
+            showCancel : false,
+            success:function(res){
+              if (res.confirm) {
+                wx.navigateBack({});
+              }
+            }
+          })
+        }else{
+          wx.showModal({
+            content: result.error,
+            showCancel : false,
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateBack({});
+              }
+            }
+          })
+        }
+      });
+    });
   }
 
 })

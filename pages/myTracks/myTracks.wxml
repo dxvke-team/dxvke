@@ -1,14 +1,14 @@
 <!--pages/myTracks/myTracks.wxml-->
 <view class='myTracks'>
-   <view class='list'>
-      <view class='date'>2018-01-08</view>
-       <view class='goods_list' wx:for="{{2}}">
-          <image src='../../images/product.png'></image>
+   <view class='list' wx:for='{{footPrint}}' wx:key='{{index}}'>
+      <view class='date'>{{index}}</view>
+       <view class='goods_list' wx:for="{{item.object}}" wx:for-item='ite'>
+          <image src='{{ite.pict_url}}'></image>
           <view class='right'>
-             <view class='right_name'>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</view>
+             <view class='right_name'>{{ite.title}}</view>
             <view class='right_bottom'>
-             <view class='right_num'>已售3件</view>
-             <view class='right_p'><text style='font-size:24rpx;'>￥</text><text>139</text><text style='font-size:24rpx;'>.99</text></view></view>
+             <view class='right_num'>已售{{ite.volume}}件</view>
+             <view class='right_p'><text style='font-size:24rpx;'>￥</text><text>{{ite.reserve_price.rmb}}</text><text style='font-size:24rpx;'>.{{ite.reserve_price.corner}}</text></view></view>
           </view>
        </view>
    </view>
