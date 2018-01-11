@@ -22,7 +22,8 @@ App({
   },
 
   //上传图片 - 20180110 - LQ
-  uploadimg: function (data) {
+  uploadimg: function (data,cb) {
+    
     var that = this,
       i = data.i ? data.i : 0,
       success = data.success ? data.success : 0,
@@ -30,32 +31,31 @@ App({
     wx.uploadFile({
       url: data.url,
       filePath: data.path[i],
-      name: 'logo',
-      formData: {
-        id: data.id
-      },
+      name: 'images',
+      // formData: {
+      //   id: data.id
+      // },
       success: function (res) {
         success++;
-        console.log(res)
-        console.log(i);
-
+        var image = {
+          image_url : res.data
+        };
+        that.globalData.imagesList.push(image);
       },
       fail: function (res) {
         fail++;
-        console.log('fail:' + i + "fail:" + fail);
+        console.log(res);
       },
       complete: function (res) {
-        console.log(i);
         i++;
-        if (i == data.path.length) {  //当图片传完时，停止调用       
-          console.log('执行完毕');
-          console.log('成功：' + success + " 失败：" + fail);
+        if (i == data.path.length) {  //当图片传完时，停止调用   
+          var imagesList = that.globalData.imagesList;
+          typeof cb == "function" && cb(imagesList);
         } else {
-          console.log(i);
           data.i = i;
           data.success = success;
           data.fail = fail;
-          that.uploadimg(data);
+          that.uploadimg(data,cb);
         }
 
       }
@@ -64,6 +64,7 @@ App({
 
   globalData: {
     userInfo: null,
-    member_id : null
+    member_id : null,
+    imagesList : []
   }
 })
