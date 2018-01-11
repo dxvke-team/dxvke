@@ -23,7 +23,8 @@
     "pages/infoCenter/infoCenter",
     "pages/feedback/feedback",
     "pages/shareList/shareList",
-    "pages/share/share"
+    "pages/share/share",
+    "pages/exchange/exchange"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

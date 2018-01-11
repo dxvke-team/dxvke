@@ -12,7 +12,7 @@ Page({
     expertList: [{ //假数据
 
     }],
-    orderList: [], //兑换记录列表 - LQ
+    orderList: [], //订单列表 - LQ
   },
   // 滚动切换标签样式
   switchTab: function (e) {
@@ -70,6 +70,25 @@ Page({
       that.setData({
         orderList: res.data.order_list
       });
+    });
+  },
+
+  //添加订单 - 20180111 - LQ
+  formSubmit:function(e){
+    var that = this;
+    var orderNum = e.detail.value.orderNum;
+    http.httpPost('addOrder',{order_num:orderNum},function(res){
+      if(res.code == 200){
+        wx.showModal({
+          content : res.data.message,
+          showCancel : false
+        })
+      }else{
+        wx.showModal({
+          content: res.error,
+          showCancel : false
+        })
+      }
     });
   }
 })

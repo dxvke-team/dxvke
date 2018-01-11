@@ -27,7 +27,6 @@ function Get (url, data, cb ){
 };
 
 function Post (url,data, cb ){
-  console.log(config.HTTP_BASE_URL + url);
   var session_id = wx.getStorageSync('PHPSESSID');//本地取存储的sessionID  
   if (session_id != "" && session_id != null) {
     var header = { 'content-type': 'application/x-www-form-urlencoded', 'Cookie': 'PHPSESSID=' + session_id }
