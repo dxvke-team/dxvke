@@ -98,7 +98,6 @@ Page({
   getOrderList:function(order_type){
     var that = this;
     http.httpPost('myOrder', {back_status:order_type},function(res){
-      console.log(res.data.order_list)
       if(res.data.order_list.length==0){
         that.setData({
           orderList: res.data.order_list,
@@ -134,7 +133,6 @@ Page({
     });
   },
   toShare:function(e){
-    console.log(e)
     var num = e.target.dataset.num
     wx.navigateTo({
       url: '../share/share?num='+num,

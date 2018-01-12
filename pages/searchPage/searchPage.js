@@ -8,40 +8,49 @@ Page({
   data: {
     focus:true,
     show:true,
-    winHeight: "",//窗口高度
-    currentTab: 9, //预设当前项的值
+    currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    expertList: [{ //假数据
-
-    }],
     hotWords: [], //热门搜索词 - LQ
     historyWords: [], //历史搜索词 - LQ
     sortList: [], //排序方式 - LQ
-    goodsList: [], //搜索结果 - LQ
+    goodsList1: [], //搜索结果 - LQ
+    goodsList2: [],
+    goodsList3: [],
+    keywords:'',
+    page1:1,
+    page2: 1,
+    page3: 1,
+    limit:20,
+    scrollTop:0,
   },
   toClose:function(e){
     wx.navigateBack();
   },
-  // 滚动切换标签样式
-  switchTab: function (e) {
-    this.setData({
-      currentTab: e.detail.current
-    });
-    this.checkCor();
-  },
+  // // 滚动切换标签样式
+  // switchTab: function (e) {
+  //   console.log(e)
+  //   this.setData({
+  //     currentTab: e.detail.current
+  //   });
+  //   this.checkCor();
+  // },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
+    var that = this
     var cur = e.target.dataset.current;
-    if (this.data.currentTaB == cur) { return false; }
+    if (this.data.currentTab == cur) { return false; }
     else {
-      this.setData({
-        currentTab: cur
+      that.setData({
+        currentTab: cur,
       })
     }
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
   checkCor: function () {
-    if (this.data.currentTab > 4) {
+    if (this.data.currentTab > 3) {
       this.setData({
         scrollLeft: 300
       })
@@ -53,41 +62,9 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    //  高度自适应
-    wx.getSystemInfo({
-      success: function (res) {
-        var clientHeight = res.windowHeight,
-          clientWidth = res.windowWidth,
-          rpxR = 750 / clientWidth;
-        var calc = clientHeight * rpxR;
-        that.setData({
-          winHeight: calc
-        });
-      }
-    });
-
-    // 热门搜索词 - 20180109 - LQ
-    http.httpPost('searchHot',{},function(res){
-      that.setData({
-        hotWords : res.data.hot 
-      });
-    });
-
-    // 历史搜索词 - 20180109 - LQ
-    http.httpPost('searchPage',{},function(res){
-      that.setData({
-        historyWords: res.data.history
-      });
-    });
-
-    //搜索结果排序方式 - 20180109 - LQ
-    http.httpPost('serrchSort',{},function(res){
-      console.log(res);
-      that.setData({
-        sortList : res.data.sorts_type,
-        currentTab: res.data.sorts_type[0]['id']
-      });
-    });
+    that.getHotWords()
+    that.getHistoryWords()
+    that.getSort()
   },
   // 清空搜索历史 - 20180109 - LQ
   clearHistory:function(){
@@ -104,7 +81,77 @@ Page({
       }
     });
   },
-
+  getHotWords:function(){
+    var that =this
+    // 热门搜索词 - 20180109 - LQ
+    http.httpPost('searchHot', {}, function (res) {
+      that.setData({
+        hotWords: res.data.hot
+      });
+    });
+  },
+  getHistoryWords:function(){
+    var that = this
+    // 历史搜索词 - 20180109 - LQ
+    http.httpPost('searchPage', {}, function (res) {
+      console.log(res.data.history)
+      that.setData({
+        historyWords: res.data.history
+      });
+    });
+  },
+  getSort:function(){
+    var that = this
+    //搜索结果排序方式 - 20180109 - LQ
+    http.httpPost('serrchSort', {}, function (res) {
+      that.setData({
+        sortList: res.data.sorts_type,
+        currentTab: res.data.sorts_type[0]['id']
+      });
+    });
+  },
+  getGoodsList1:function(){
+    var that = this
+    http.httpPost('doSearch', {
+      keywords: that.data.keywords,
+      sort: 9,
+      page:that.data.page1,
+      limit:that.data.limit
+    }, function (res) {
+      var goodsList1 = that.data.goodsList1.concat(res.data.product_list)
+      that.setData({
+        goodsList1: goodsList1,
+      });
+    });
+  },
+  getGoodsList2: function () {
+    var that = this
+    http.httpPost('doSearch', {
+      keywords: that.data.keywords,
+      sort: 10,
+      page: that.data.page2,
+      limit: that.data.limit
+    }, function (res) {
+      var goodsList2 = that.data.goodsList2.concat(res.data.product_list)
+      that.setData({
+        goodsList2: goodsList2,
+      });
+    });
+  },
+  getGoodsList3: function () {
+    var that = this
+    http.httpPost('doSearch', {
+      keywords: that.data.keywords,
+      sort: 11,
+      page: that.data.page3,
+      limit: that.data.limit
+    }, function (res) {
+      var goodsList3 = that.data.goodsList3.concat(res.data.product_list)
+      that.setData({
+        goodsList3: goodsList3,
+      });
+    });
+  },
   // 获取焦点事件
   bindfocus:function(e){
     this.setData({ show: true });
@@ -113,22 +160,69 @@ Page({
   bindconfirm:function(e){
     var that = this;
     //搜索商品 - 20180109 - LQ
-    var searchWord = e.detail.value;
-    http.httpPost('doSearch',{
-      keywords : searchWord,
-      sort: 　that.data.currentTab
-    },function(res){
+    if (e.currentTarget.dataset.key){
+      var searchWord = e.currentTarget.dataset.key;
       that.setData({
-        goodsList: res.data.product_list
-      });
-      that.setData({ show: false });
-    });
+        show: false,
+        keywords: searchWord
+      })
+      that.getGoodsList1()
+      that.getGoodsList2()
+      that.getGoodsList3()
+    }else{
+      var searchWord = e.detail.value
+      that.setData({
+        show: false,
+        keywords: searchWord
+      })
+      that.getGoodsList1()
+      that.getGoodsList2()
+      that.getGoodsList3()
+    }
+   
   },
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
+  // /**
+  //  * 页面相关事件处理函数--监听用户下拉动作
+  //  */
   onPullDownRefresh: function () {
-   console.log('下拉啦')
+    console.log("下拉")
+    this.setData({
+      goodsList1: [], //搜索结果 - LQ
+      goodsList2: [],
+      goodsList3: [],
+      scrollTop: 0,
+      page1: 1,
+      page2: 1,
+      page3: 1
+    });
+    this.getGoodsList1()
+    this.getGoodsList2()
+    this.getGoodsList3()
+  },
+  onReachBottom: function () {
+    console.log("上拉")
+    var that = this
+    if(that.data.currentTab==9){
+      var page = this.data.page1 + 1
+      this.setData({
+        page1: page,
+      })
+      that.getGoodsList1()
+     
+    } else if (that.data.currentTab == 10){
+      var page = this.data.page2 + 1
+      this.setData({
+        page2: page,
+      })
+      that.getGoodsList2()
+     
+    }else{
+      var page = this.data.page3 + 1
+      this.setData({
+        page3: page,
+      })
+      that.getGoodsList3()
+    }
   },
 
 })

@@ -56,7 +56,7 @@
   background-color: white;
   margin-bottom: 8rpx;
 }
-.list image{
+.imgList image{
   width: 228rpx;
   height: 228rpx;
   margin-right: 6rpx;
@@ -73,4 +73,19 @@
 .imgList{
     margin-top: 24rpx;
     font-size: 0;
+}
+.pic{
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.name{
+  font-size:28rpx;
+  color: #333;
+  margin-bottom:10rpx;
+}
+.user_info{
+  display: flex;
+
 }

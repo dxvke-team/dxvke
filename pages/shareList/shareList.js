@@ -9,11 +9,9 @@ Page({
     winHeight: "",//窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    expertList: [{ //假数据
-
-    }],
     orderList: [], //我的晒单列表
     orderSquareList:[], //晒单广场列表
+    list:[]
   },
   // 滚动切换标签样式
   switchTab: function (e) {
@@ -26,7 +24,7 @@ Page({
   swichNav: function (e) {
     var that = this;
     var cur = e.target.dataset.current;
-    if (this.data.currentTaB == cur) { return false; }
+    if (this.data.currentTab == cur) { return false; }
     else {
       that.setData({
         currentTab: cur
@@ -41,7 +39,7 @@ Page({
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
   checkCor: function () {
-    if (this.data.currentTab > 4) {
+    if (this.data.currentTab > 2) {
       this.setData({
         scrollLeft: 300
       })
@@ -78,7 +76,7 @@ Page({
     http.httpPost('myShareOrder',{},function(res){
       console.log(res.data.my_order)
       that.setData({
-        myOrderList: res.data.my_order
+        list: res.data.my_order
       });
     });
   },
@@ -86,8 +84,9 @@ Page({
   orderSquare:function(){
     var that = this;
     http.httpPost('orderSquare',{},function(res){
+      console.log(res.data.order_square)
       that.setData({
-        orderSquareList: res.data.order_square
+        list: res.data.order_square
       });
     });
   }

@@ -25,7 +25,6 @@
     "pages/shareList/shareList",
     "pages/share/share",
     "pages/exchange/exchange"
-    
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

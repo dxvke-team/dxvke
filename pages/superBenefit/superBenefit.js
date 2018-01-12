@@ -8,7 +8,6 @@ Page({
   data: {
     toView: 'red',
     scrollTop: 100,
-    list:6,
     nine_banner:{},     //9.9banner图
     nine_goods:[],      //9.9商品列表
     nineteen_banner:{}, //19.9banner图
@@ -24,6 +23,7 @@ Page({
   {
     var that = this;
     http.httpPost('c_index_nine',{},function(res){
+      console.log(res.data)
         that.setData({
           nine_banner : res.data.type,
           nine_goods : res.data.goods

@@ -12,12 +12,27 @@
      style="height:{{winHeight}}rpx">
         <swiper-item wx:for="{{[0,1]}}" wx:key="{{item}}">
             <scroll-view scroll-y="true" class="scoll-h" >
-                <block wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="*this">
+                <!-- <block wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="*this">
                     <view class='list'>
                         <view class='time'>2017-12-28</view>
                         <view class='des'>2343543546</view>
                         <view class='imgList'>
-                          <image src="../../images/index/hot.png"></image>
+                          <image src='../../images/product.png'></image>
+                        </view>
+                    </view>
+                </block> -->
+                <block wx:for="{{list}}" wx:key="*this">
+                    <view class='list'>
+                        <view class='user_info'>
+                             <image src='{{item.wechat_head_image}}' class='pic' wx:if="{{currentTab == 1}}"></image> 
+                            <view>
+                                <view class='name' wx:if="{{currentTab == 1}}">{{item.wechat_nickname}}</view> 
+                               <view class='time'>{{item.create_time}}</view>
+                            </view>
+                        </view>
+                        <view class='des'>{{item.evaluate_detail}}</view>
+                        <view class='imgList'>
+                          <image src='{{item.image}}' wx:for="{{item.evaluate_url}}" wx:key="{{item}}"></image>
                         </view>
                     </view>
                 </block>

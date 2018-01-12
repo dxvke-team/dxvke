@@ -88,10 +88,6 @@
   height: 50rpx;
   overflow: hidden;
 }
-.tab-content {
-  background: white;
-  margin-top: 80rpx;
-}
 .old_price{
   font-size: 20rpx;
     color: #999;

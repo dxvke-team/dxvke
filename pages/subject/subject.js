@@ -3,31 +3,32 @@
 var http = require('../../utils/httpHelper.js');
 Page({
   data: {
-    winHeight: "",//窗口高度
+    page1: 1,
+    page2: 1,
+    page3: 1,
+    page4: 1,
+    limit:10,
     currentTab: 1, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    expertList: [{ //假数据
-
-    }],
     sortList:[], //排序方式 - LQ
-    goodsList:[], //商品列表
-  },
-  // 滚动切换标签样式
-  switchTab: function (e) {
-    this.setData({
-      currentTab: e.detail.current
-    });
-    this.checkCor();
+    goodsList1:[], //商品列表
+    goodsList2: [], //商品列表
+    goodsList3: [], //商品列表
+    goodsList4: [], //商品列表
+    type_id:''
   },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
     var cur = e.target.dataset.current;
-    if (this.data.currentTaB == cur) { return false; }
+    if (this.data.currentTab == cur) { return false; }
     else {
       this.setData({
         currentTab: cur
       })
     }
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
   checkCor: function () {
@@ -43,36 +44,59 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    //  高度自适应
-    wx.getSystemInfo({
-      success: function (res) {
-        var clientHeight = res.windowHeight,
-          clientWidth = res.windowWidth,
-          rpxR = 750 / clientWidth;
-        var calc = clientHeight * rpxR;
-        that.setData({
-          winHeight: calc
-        });
-      }
-    });
-
     //排序方式 - 20180108 - LQ
     http.httpPost('nine_sort', {},function(res){
       that.setData({
         sortList: res.data.sorts_type,
-        currentTaB : res.data.sorts_type[0]['id']
+        currentTaB : res.data.sorts_type[0]['id'],
+        type_id: options.type_id
       });
       
     });
-
-
-    //商品列表 - 20180108 - LQ
-    http.httpPost('nine', { sort: that.data.currentTab, type_id:options.type_id},function(res){
-        console.log(res);
-        that.setData({
-          goodsList: res.data.nine_products
-        });
+    that.getGoodsList1()
+    that.getGoodsList2()
+    that.getGoodsList3()
+    that.getGoodsList4()
+  },
+  //商品列表 - 20180108 - LQ
+  getGoodsList1:function(){
+    var that = this;
+    http.httpPost('nine', { sort: 1, type_id: that.data.type_id , page: that.data.page1, limit: that.data.limit }, function (res) {
+      console.log(res);
+      that.setData({
+        goodsList1: res.data.nine_products
+      });
     });
   },
-  // footerTap: app.footerTap
+  //商品列表 - 20180108 - LQ
+  getGoodsList2: function () {
+    var that = this;
+    http.httpPost('nine', { sort: 2, type_id: that.data.type_id, page: that.data.page2, limit: that.data.limit }, function (res) {
+      console.log(res);
+      that.setData({
+        goodsList2: res.data.nine_products
+      });
+    });
+  },
+  //商品列表 - 20180108 - LQ
+  getGoodsList3: function () {
+    var that = this;
+    http.httpPost('nine', { sort: 3, type_id: that.data.type_id, page: that.data.page3, limit: that.data.limit }, function (res) {
+      console.log(res);
+      that.setData({
+        goodsList3: res.data.nine_products
+      });
+    });
+  },
+  //商品列表 - 20180108 - LQ
+  getGoodsList4: function () {
+    var that = this;
+    http.httpPost('nine', { sort: 4, type_id: that.data.type_id, page: that.data.page4, limit: that.data.limit }, function (res) {
+      console.log(res);
+      that.setData({
+        goodsList4: res.data.nine_products
+      });
+    });
+  }
+  
 })
