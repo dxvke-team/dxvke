@@ -29,5 +29,28 @@ Page({
       });
       console.log(that.data.footPrint);
     });
+  },
+
+  /**
+   * 清空我的足迹 - 20180112 - LQ
+   */
+  cleadMyTracks:function(){
+    var that = this;
+    http.httpPost('delPrint',{},function(res){
+      if(res.code == 200){
+        that.setData({
+          footPrint : []
+        });
+        wx.showModal({
+          content: res.data.message,
+          showCancel: false
+        })
+      }else{
+        wx.showModal({
+          content: res.error,
+          showCancel: false
+        })
+      }
+    });
   }
 })

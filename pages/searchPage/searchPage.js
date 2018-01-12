@@ -9,7 +9,7 @@ Page({
     focus:true,
     show:true,
     winHeight: "",//窗口高度
-    currentTab: 9, //预设当前项的值
+    currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     expertList: [{ //假数据
 
@@ -85,7 +85,7 @@ Page({
       console.log(res);
       that.setData({
         sortList : res.data.sorts_type,
-        currentTab: res.data.sorts_type[0]['id']
+        //currentTab: res.data.sorts_type[0]['id']
       });
     });
   },

@@ -18,8 +18,6 @@
                         <view class='des'>2343543546</view>
                         <view class='imgList'>
                           <image src="../../images/index/hot.png"></image>
-                           <image src="../../images/index/hot.png"></image>
-                            <image src="../../images/index/hot.png"></image>
                         </view>
                     </view>
                 </block>

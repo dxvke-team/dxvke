@@ -10,6 +10,7 @@ Page({
   data: {
      list:4,
      show:false,
+     showAcer:true,
      showService:true,
      showJuan:true,
      goodsDetail:{}, // 商品详情 - LQ
@@ -26,19 +27,7 @@ Page({
     that.setData({
       show:false
     });
-
-    //获取商品详情 - 20180108 - LQ
-    http.httpPost('goodsDetail',{goods_id:options.id,type:options.id},function(res){
-      that.setData({
-        goodsDetail : res.data
-      });
-      //猜你喜欢商品列表 - 20180108 - LQ
-      http.httpPost('relevance', { id: that.data.goodsDetail.id }, function (res) {
-        that.setData({
-          likeList: res.data.goodsList
-        });
-      });
-    });
+    that.getProductDetail(options);
   },
 
   /**
@@ -53,20 +42,6 @@ Page({
       });
       app.globalData.userInfo = res;
     });
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
   },
   click:function(e){
     this.setData({
@@ -114,6 +89,31 @@ Page({
   closeJuan:function(e){
     this.setData({
       showJuan: true
+    })
+  },
+
+  /**
+   * 获取商品详情 - 20180112 - LQ
+   */
+  getProductDetail: function(options){
+    var that = this;
+    http.httpPost('goodsDetail', { goods_id: options.id, type: options.type }, function (res) {
+      that.setData({
+        goodsDetail: res.data
+      });
+      //猜你喜欢商品列表 - 20180108 - LQ
+      http.httpPost('relevance', { id: that.data.goodsDetail.id }, function (res) {
+        that.setData({
+          likeList: res.data.goodsList
+        });
+      });
+    });
+  },
+
+  toDetail:function(e){
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: "../goodsDetail/goodsDetail?id=" + id
     })
   }
 })

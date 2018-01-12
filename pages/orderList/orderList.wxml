@@ -1,12 +1,12 @@
 <!--pages/orderList/orderList.wxml-->
 <view class='orderList'>
-  <form bindsubmit="formSubmit">
     <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
       <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">添加订单</view>
       <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">全部订单</view>
       <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">待返订单</view>
       <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">已返订单</view>
     </scroll-view>
+     <form bindsubmit="formSubmit">
     <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
       <swiper-item wx:for="{{[0]}}" wx:key="{{item}}">
         <scroll-view scroll-y="true" class="scoll-h">
@@ -31,19 +31,40 @@
       </swiper-item>
       <swiper-item wx:for="{{[1,2,3]}}" wx:key="{{item}}">
         <scroll-view scroll-y="true" class="scoll-h">
-          <view class='empty'>
+          <view class='empty' hidden='{{show}}'>
             <image src='../../images/user/nothing_img.png'></image>
             <view>暂时没有相关订单记录~</view>
           </view>
           <block wx:for="{{orderList}}" wx:key="*this">
-                
+             <view class='list'>
+                <view class='list_order_num'><text style='color:#999;'>订单号：<text style='color:#333;'>{{item.order_num}}</text></text>
+                <text style='color:#ff425f;' wx:if="{{item.back_status=='1'}}">已返</text>
+                <text style='color:#ff425f;' wx:if="{{item.back_status=='2'}}">待返</text>
+                 <text style='color:#ff425f;' wx:if="{{item.back_status=='3'}}">拒绝</text>
+                </view>
+                <view class='list_main'>
+                    <!-- <view> -->
+                      <image src='../../images/order_img.png' class='list_pic'></image>
+                    <!-- </view> -->
+                    <view class='list_main_des'>
+                       <view>
+                         <view class='list_return'>返{{item.back_acer}}元宝</view>
+                         <view class='list_date'>日期：{{item.create_time}}</view>
+                       </view>
+                       <view class='btn' catchtap='toShare' data-num="{{item.order_num}}">去晒单</view>
+                    </view>
+
+                </view>
+             </view>
           </block>
         </scroll-view>
       </swiper-item>
     </swiper>
-    <view style='height:140rpx;'></view>
-    <view class='all_btn'>
-      <button formType="submit">确认提交</button>
+    <view hidden='{{isShow}}'>
+       <view style='height:140rpx;'></view>
+            <view class='all_btn'>
+              <button formType="submit">确认提交</button>
+            </view>
     </view>
-  </form>
+      </form>
 </view>

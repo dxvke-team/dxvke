@@ -14,6 +14,6 @@
    </view>
    <view class='tip'>已经到底了，快去挑几件好货吧~</view>
  <view class='all_btn'>
-    <button type="warn" bindtap="warn">清空</button>
+    <button bindtap="cleadMyTracks">清空</button>
   </view>
 </view>

@@ -37,9 +37,10 @@ function login (cb) {
         var code = result.code;
         wx.getUserInfo({
           success: function (res) {
+            console.log(res);
             //发起网络请求
             var userInfo = res.userInfo;
-            http.httpPost('login', { code: code, user_info: res.rawData}, function (res) {
+            http.httpPost('login', { code: code, user_info: res.rawData, encryptedData: res.encryptedData, iv: res.iv}, function (res) {
               //将session_key存档
               wx.setStorageSync('LoginSessionKey', res.session_key);
               wx.setStorageSync('member_id', res.member_id);

@@ -31,9 +31,9 @@ Page({
     scrollHeight: 0,
     acer:0, //会员元宝
     page:1, //页码
-    limit:10 //每页显示数据条数
+    limit:10, //每页显示数据条数
   },
-  onLoad: function () {
+  onLoad: function (options) {
     var that = this;
 
 
@@ -107,9 +107,9 @@ Page({
       url: '../exchangeList/exchangeList',
     })
   },
-  toExchange:function(){
+  toExchange:function(e){
     wx.navigateTo({
-      url: '../exchange/exchange',
+      url: '../exchange/exchange?id='+e.currentTarget.dataset.id,
     })
   }
 })  
