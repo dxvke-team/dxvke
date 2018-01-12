@@ -8,10 +8,15 @@
         <view class='address'>{{item.province}}{{item.country}}{{item.district}}</view>
       </view>
       <view class='setting'>
-        <label class="radio">
-          <radio value="1" checked="{{checked}}" color='#ff425f' />设为默认</label>
-        <text data-id='{{item.address_id}}' catchtap='delAddress'>删除</text>
-        <text data-id='{{item.address_id}}' catchtap='toEdit'>编辑</text>
+      <label wx:if='{{chooseShow}}' class="radio"  data-id='{{item.address_id}}' catchtap='chooseAddress' >
+          <radio checked="checked" color='#c4c4c4'/>使用               </label>
+        <label wx:elif='{{item.is_default == 1}}' class="radio">
+          <radio checked="checked" color='#ff425f' />默认地址                </label>
+        <label wx:elif='{{item.is_default == 2}}' class="radio" data-id='{{item.address_id}}' catchtap='setDefault'>
+          <radio  checked='false' color='#c4c4c4' />设为默认       
+        </label>
+        <text wx:if='{{!chooseShow}}' data-id='{{item.address_id}}' catchtap='delAddress'>删除</text>
+        <text wx:if='{{!chooseShow}}' data-id='{{item.address_id}}' catchtap='toEdit'>编辑</text>
       </view>
     </view>
   </view>

@@ -4,7 +4,7 @@
   <!-- <text class='nickname'>昵称</text> -->
   <text class='nickname'>{{userInfo.nickName}}</text>
   <image class='acer' src='../../images/acer.png'></image>
-  <text class='acer_number'>88</text>
+  <text class='acer_number'>{{userAcer}}</text>
 </view>
 <view class='my_order' catchtap='toOrderList' data-type='0'>
   <view class='my_order_child'>我的订单</view>

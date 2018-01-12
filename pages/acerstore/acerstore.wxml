@@ -19,7 +19,7 @@
   </view>
   <view class='list'>
     <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
-      <view class="goods_list" wx:for="{{list}}" wx:key="{{item}}" catchtap='toExchange'>
+      <view class="goods_list" wx:for="{{list}}" wx:key="{{item}}"  data-id='{{item.product_id}}' catchtap='toExchange'>
         <image class="img" src="{{item.product_image}}"></image>
         <view class="text">
           <text class="goods_title">{{item.product_name}}</text>

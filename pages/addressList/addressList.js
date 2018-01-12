@@ -8,7 +8,8 @@ Page({
   data: {
       checked:false,
       addressList:[], //地址列表 - LQ
-
+      chooseShow: false,
+      product_id: '', //商品id - LQ
   },
 
   /**
@@ -18,6 +19,14 @@ Page({
     var that = this;
     //获取地址列表 - 20180109 - LQ
     that.getAddressList();
+    if (options.type == 'choose'){
+      that.setData({
+        chooseShow : true
+      });
+    }
+    that.setData({
+      product_id : options.id
+    });
   },
   toEdit:function(e){
     var address_id = e.currentTarget.dataset.id
@@ -61,5 +70,39 @@ Page({
     wx.navigateTo({
       url: '../editAddress/editAddress',
     })
+  },
+
+  /**
+   * 选择收货地址 - 20180112 - LQ
+   */
+  chooseAddress:function(e)
+  {
+    var that = this;
+    var address_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../exchange/exchange?address_id=' + address_id + '&id=' + that.data.product_id,
+    })
+  },
+
+  /**
+   * 设为默认地址 - 20180112 - LQ
+   */
+  setDefault: function(e){
+    var that = this;
+    var address_id = e.currentTarget.dataset.id;
+    http.httpGet('setDefaultAddress',{address_id:address_id},function(res){
+      if(res.code == 200){
+        wx.showModal({
+          content: '设置成功',
+          showCancel: false,
+        })
+        that.getAddressList();
+      }else{
+        wx.showModal({
+          content: res.error,
+          showCancel: false,
+        })
+      }
+    });
   }
 })

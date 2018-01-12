@@ -45,7 +45,7 @@ Page({
       var action = 'addAddress';
     }
     
-    http.httpPost('updateAddress',{
+    http.httpPost(action,{
       address_id : address_id,
       person_name : person_name,
       telephone : telephone,
@@ -59,7 +59,7 @@ Page({
           success:function(result){
             if (result.confirm){
               wx.navigateTo({
-                url: 'pages/addressList/addressList',
+                url: '../addressList/addressList',
               })
             }
           }
