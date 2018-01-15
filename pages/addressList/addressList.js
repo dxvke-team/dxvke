@@ -40,7 +40,10 @@ Page({
   {
     var that = this;
     var address_id = e.currentTarget.dataset.id
-    http.httpPost('delAddress',{address_id:address_id},function(res){
+    http.httpPost('delAddress',{
+        address_id:address_id,
+        member_id: wx.getStorageSync('member_id') 
+      },function(res){
       if(res.code == 200){
         that.getAddressList();
         var title = '删除成功';
@@ -57,7 +60,9 @@ Page({
   //查询地址列表 - 20180109 - LQ
   getAddressList:function(){
     var that = this;
-    http.httpPost('address_list', {}, function (res) {
+    http.httpPost('address_list', {
+      member_id: wx.getStorageSync('member_id') 
+    }, function (res) {
       var addressList = res.data.address_list;
       that.setData({
         addressList: addressList
@@ -90,7 +95,10 @@ Page({
   setDefault: function(e){
     var that = this;
     var address_id = e.currentTarget.dataset.id;
-    http.httpGet('setDefaultAddress',{address_id:address_id},function(res){
+    http.httpGet('setDefaultAddress',{
+        address_id:address_id,
+        member_id: wx.getStorageSync('member_id') 
+      },function(res){
       if(res.code == 200){
         wx.showModal({
           content: '设置成功',

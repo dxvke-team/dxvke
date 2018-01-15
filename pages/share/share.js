@@ -103,7 +103,8 @@ Page({
       http.httpPost('shareOrder_front',{
         evaluate : content,
         order_num : orderNum,
-        evaluate_url: JSON.stringify(res)
+        evaluate_url: JSON.stringify(res),
+        member_id: wx.getStorageSync('member_id') 
       },function(result){
         if(result.code == 200){
           wx.showModal({

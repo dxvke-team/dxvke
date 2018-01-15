@@ -28,7 +28,6 @@ Page({
       that.setData({
         currentTab: cur
       });
-      console.log(that.data.currentTab);
       that.getOrderList();
     }
   },
@@ -64,7 +63,10 @@ Page({
 
   getOrderList:function(){
     var that  = this;
-    http.httpPost('myexchange', { acer_type: that.data.currentTab }, function (res) {
+    http.httpPost('myexchange', { 
+       acer_type: that.data.currentTab,
+       member_id: wx.getStorageSync('member_id') 
+      }, function (res) {
       that.setData({
         exchangeList: res.data.acer_goods,
         freeMoney: res.data.free_money

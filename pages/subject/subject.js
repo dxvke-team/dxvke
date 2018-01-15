@@ -45,7 +45,9 @@ Page({
   onLoad: function (options) {
     var that = this;
     //排序方式 - 20180108 - LQ
-    http.httpPost('nine_sort', {},function(res){
+    http.httpPost('nine_sort', {
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       that.setData({
         sortList: res.data.sorts_type,
         currentTaB : res.data.sorts_type[0]['id'],
@@ -53,15 +55,15 @@ Page({
       });
       
     });
-    that.getGoodsList1()
-    that.getGoodsList2()
-    that.getGoodsList3()
-    that.getGoodsList4()
+    that.getGoodsList1(options.type_id)
+    that.getGoodsList2(options.type_id)
+    that.getGoodsList3(options.type_id)
+    that.getGoodsList4(options.type_id)
   },
   //商品列表 - 20180108 - LQ
-  getGoodsList1:function(){
+  getGoodsList1: function (type_id){
     var that = this;
-    http.httpPost('nine', { sort: 1, type_id: that.data.type_id , page: that.data.page1, limit: that.data.limit }, function (res) {
+    http.httpPost('nine', { sort: 1, type_id: type_id, page: that.data.page1, limit: that.data.limit, member_id: wx.getStorageSync('member_id')  }, function (res) {
       console.log(res);
       that.setData({
         goodsList1: res.data.nine_products
@@ -69,9 +71,9 @@ Page({
     });
   },
   //商品列表 - 20180108 - LQ
-  getGoodsList2: function () {
+  getGoodsList2: function (type_id) {
     var that = this;
-    http.httpPost('nine', { sort: 2, type_id: that.data.type_id, page: that.data.page2, limit: that.data.limit }, function (res) {
+    http.httpPost('nine', { sort: 2, type_id: type_id, page: that.data.page2, limit: that.data.limit, member_id: wx.getStorageSync('member_id')  }, function (res) {
       console.log(res);
       that.setData({
         goodsList2: res.data.nine_products
@@ -79,9 +81,9 @@ Page({
     });
   },
   //商品列表 - 20180108 - LQ
-  getGoodsList3: function () {
+  getGoodsList3: function (type_id) {
     var that = this;
-    http.httpPost('nine', { sort: 3, type_id: that.data.type_id, page: that.data.page3, limit: that.data.limit }, function (res) {
+    http.httpPost('nine', { sort: 3, type_id: type_id, page: that.data.page3, limit: that.data.limit, member_id: wx.getStorageSync('member_id')  }, function (res) {
       console.log(res);
       that.setData({
         goodsList3: res.data.nine_products
@@ -89,14 +91,24 @@ Page({
     });
   },
   //商品列表 - 20180108 - LQ
-  getGoodsList4: function () {
+  getGoodsList4: function (type_id) {
     var that = this;
-    http.httpPost('nine', { sort: 4, type_id: that.data.type_id, page: that.data.page4, limit: that.data.limit }, function (res) {
+    http.httpPost('nine', { sort: 4, type_id: type_id, page: that.data.page4, limit: that.data.limit, member_id: wx.getStorageSync('member_id')  }, function (res) {
       console.log(res);
       that.setData({
         goodsList4: res.data.nine_products
       });
     });
+  },
+
+  /**
+   * 跳转商品详情 - 20180115 - LQ
+   */
+  toGoodsDetail:function(e){
+    var goods_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../goodsDetail/goodsDetail?id='+goods_id,
+    })
   }
   
 })

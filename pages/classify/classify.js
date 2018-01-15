@@ -22,8 +22,12 @@ Page({
   },
   getGoods:function(){
     var that = this;
-    http.httpPost('goodslist', { cate_id: that.data.cate_id, limit: that.data.limit, page: that.data.page }, function (res) {
-      var goods = that.data.goods.concat(res.data.goodsList)
+    http.httpPost('goodslist',{
+        cate_id:options.id,
+        limit:that.data.limit,
+        page:that.data.page,
+        member_id: wx.getStorageSync('member_id') 
+      },function(res){
       that.setData({
         goods: goods
       });

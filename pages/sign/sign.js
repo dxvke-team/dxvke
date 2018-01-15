@@ -49,7 +49,10 @@ Page({
   // 点击签到
   sign:function(e){
     var that = this;
-    http.httpPost('dosign',{},function(res){
+    http.httpPost('dosign',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
+      
       if(res.code == 200){
         that.setData({
           showModel: false,
@@ -75,7 +78,9 @@ Page({
   getTodayReward: function()
   {
     var that = this;
-    http.httpPost('signpage_reward',{},function(res){
+    http.httpPost('signpage_reward',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       if(res.data.is_sign == 1){
         var show = true;
       }else{
@@ -94,7 +99,9 @@ Page({
    */
   weekSign: function(){
     var that = this;
-    http.httpPost('signpage_week',{},function(res){
+    http.httpPost('signpage_week',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       that.setData({
         signNotes : res.data.week,
         continueDays: res.data.continue_days
@@ -107,7 +114,9 @@ Page({
    */
   exchangeList: function(){
     var that = this;
-    http.httpPost('signpage_history',{},function(res){
+    http.httpPost('signpage_history',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       if(res.code == 200){
         that.setData({
           exchangeList: res.data.exchange_order

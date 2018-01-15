@@ -16,14 +16,18 @@ Page({
   onLoad: function (options) {
     var that = this;
     //应季必备banner图 - 20180109 - LQ
-    http.httpPost('season_banner',{},function(res){
+    http.httpPost('season_banner',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       that.setData({
         banner: res.data.banner[0]['banner_image']
       });
     });
 
     //应季必备商品 - 20180109 - LQ
-    http.httpPost('seasonindex',{},function(res){
+    http.httpPost('seasonindex',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       that.setData({
         goodsList: res.data.season_products
       });
@@ -31,51 +35,12 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 跳转商品详情 - 20180115 - LQ
    */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  toGoodsDetail:function(e){
+    var goods_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../goodsDetail/goodsDetail?id=' + goods_id,
+    })
   }
 })

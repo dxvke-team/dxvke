@@ -24,7 +24,9 @@ Page({
    */
   getMessageList:function(){
     var that = this;
-    http.httpPost('getmessage',{},function(res){
+    http.httpPost('getmessage',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       that.setData({
         messageList: res.data.message_list
       });
@@ -36,7 +38,9 @@ Page({
    */
   clearMessage:function(){
     var that = this;
-    http.httpPost('delMessage',{},function(res){
+    http.httpPost('delMessage',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       if(res.code == 200){
         that.setData({
           messageList : []

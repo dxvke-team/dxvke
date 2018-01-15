@@ -60,7 +60,9 @@ Page({
     });
 
     //banner - 20180108 - LQ
-    http.httpPost('fanswelfare_banner',{},function(res){
+    http.httpPost('fanswelfare_banner',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       console.log(res);
       that.setData({
         banner:res.data.banner[0]['banner_image']
@@ -68,7 +70,9 @@ Page({
     });
 
     //排序方式 - 20180108 - LQ
-    http.httpPost('fanswelfare_type',{},function(res){
+    http.httpPost('fanswelfare_type',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       that.setData({
         sortList: res.data.sorts,
         currentTab: res.data.sorts[0]['id']
@@ -82,7 +86,10 @@ Page({
 
   getGoodsList:function(){
     var that = this;
-    http.httpPost('fanswelfare_product', { sorts_type: that.data.currentTab},function(res){
+    http.httpPost('fanswelfare_product', { 
+       sorts_type: that.data.currentTab,
+       member_id: wx.getStorageSync('member_id') 
+      },function(res){
       that.setData({
         goodsList: res.data.goods_list
       });

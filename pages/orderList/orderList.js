@@ -97,7 +97,10 @@ Page({
   //查询订单列表 - 20180109 - LQ
   getOrderList:function(order_type){
     var that = this;
-    http.httpPost('myOrder', {back_status:order_type},function(res){
+    http.httpPost('myOrder', {
+        back_status:order_type,
+        member_id: wx.getStorageSync('member_id') 
+      },function(res){
       if(res.data.order_list.length==0){
         that.setData({
           orderList: res.data.order_list,
@@ -118,7 +121,10 @@ Page({
   formSubmit:function(e){
     var that = this;
     var orderNum = e.detail.value.orderNum;
-    http.httpPost('addOrder',{order_num:orderNum},function(res){
+    http.httpPost('addOrder',{
+        order_num:orderNum,
+        member_id: wx.getStorageSync('member_id') 
+      },function(res){
       if(res.code == 200){
         wx.showModal({
           content : res.data.message,

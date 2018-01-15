@@ -8,7 +8,11 @@ var GetList = function (that) {
     hidden: false
   });
 
-  http.httpPost('acerList',{limit:10,page:page},function(res){
+  http.httpPost('acerList',{
+      limit:10,
+      page:page,
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
     // var l = that.data.list
     var l = []
     for (var i = 0; i < res.data.acer_list.length; i++) {
@@ -48,7 +52,9 @@ Page({
     var member_id = wx.getStorageSync('member_id')
     //加载元宝数据与元宝商品数据 - 20170105 - LQ
     if (member_id > 0){
-      http.httpPost('member_acer', {}, function (res) {
+      http.httpPost('member_acer', {
+        member_id: member_id
+      }, function (res) {
         that.setData({
           acer: res.data.member_acer
         });

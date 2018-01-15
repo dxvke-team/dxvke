@@ -73,6 +73,7 @@ Page({
       that.setData({
         goods: goods
       });
+      console.log(that.data.goods);
     })
 
   },

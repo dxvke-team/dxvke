@@ -61,14 +61,18 @@ Page({
     });
 
     // banner - 20180108 - LQ
-    http.httpPost('newspaper_banner',{},function(res){
+    http.httpPost('newspaper_banner',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       that.setData({
         banner: res.data.banner[0]['banner_image']
       });
     });
 
     //抢购时间 - 20180108 - LQ
-    http.httpPost('newspaper_time',{},function(res){
+    http.httpPost('newspaper_time',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       var timeList = res.data.time;
       var time = timeList[0]['panic_id'];
       for (var index in timeList){
@@ -91,7 +95,8 @@ Page({
     var condition = {
       panic_id: that.data.currentTab,
       page: that.data.page,
-      limit: that.data.limit
+      limit: that.data.limit,
+      member_id: wx.getStorageSync('member_id') 
     };
     http.httpGet('overflow', condition, function (res) {
       that.setData({

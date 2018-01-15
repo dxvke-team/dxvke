@@ -13,8 +13,10 @@ Page({
   onLoad:function(options){
     var that = this;
     if (options.id > 0){
-      http.httpGet('updateAddress', { address_id: options.id }, function (res) {
-        console.log(res);
+      http.httpGet('updateAddress', { 
+            address_id: options.id,
+            member_id: wx.getStorageSync('member_id') 
+          }, function (res) {
         that.setData({
           addressInfo: res.data.address_info,
           addressArray: res.data.address_info.address_array,
@@ -50,7 +52,8 @@ Page({
       person_name : person_name,
       telephone : telephone,
       address : province,
-      detail : address
+      detail : address,
+      member_id: wx.getStorageSync('member_id') 
     },function(res){
       if (res.code == 200){
         wx.showModal({
