@@ -86,7 +86,7 @@
         <input type="text" class="word" id="kouling" value='{{command}}' disabled='true'></input>
         <view class="des">在点击复制后，打开淘宝APP购买</view>
         <view class="des">若一键复制失败，请长按虚线内文字</view>
-        <button class="m_btn"> 一键复制</button>
+        <button class="m_btn" bindtap='copyCommand'> 一键复制</button>
       </view>
       <image src="../../images/user/cancel_img.png" alt="" catchtap='closeJuan'></image>
     </view>

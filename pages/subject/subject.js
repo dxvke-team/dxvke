@@ -64,7 +64,6 @@ Page({
   getGoodsList1: function (type_id){
     var that = this;
     http.httpPost('nine', { sort: 1, type_id: type_id, page: that.data.page1, limit: that.data.limit, member_id: wx.getStorageSync('member_id')  }, function (res) {
-      console.log(res);
       that.setData({
         goodsList1: res.data.nine_products
       });
@@ -74,7 +73,6 @@ Page({
   getGoodsList2: function (type_id) {
     var that = this;
     http.httpPost('nine', { sort: 2, type_id: type_id, page: that.data.page2, limit: that.data.limit, member_id: wx.getStorageSync('member_id')  }, function (res) {
-      console.log(res);
       that.setData({
         goodsList2: res.data.nine_products
       });
@@ -84,7 +82,6 @@ Page({
   getGoodsList3: function (type_id) {
     var that = this;
     http.httpPost('nine', { sort: 3, type_id: type_id, page: that.data.page3, limit: that.data.limit, member_id: wx.getStorageSync('member_id')  }, function (res) {
-      console.log(res);
       that.setData({
         goodsList3: res.data.nine_products
       });
@@ -94,7 +91,6 @@ Page({
   getGoodsList4: function (type_id) {
     var that = this;
     http.httpPost('nine', { sort: 4, type_id: type_id, page: that.data.page4, limit: that.data.limit, member_id: wx.getStorageSync('member_id')  }, function (res) {
-      console.log(res);
       that.setData({
         goodsList4: res.data.nine_products
       });

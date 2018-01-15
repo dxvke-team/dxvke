@@ -2,6 +2,9 @@
 var http = require('../../utils/httpHelper.js');
 var login = require('../../utils/login.js');
 const app = getApp();
+wx.showShareMenu({
+  withShareTicket: true
+})
 Page({
 
   /**
@@ -19,6 +22,19 @@ Page({
      ewm:'', //客服二维码
   },
 
+  onShareAppMessage: function (res) {
+    return {
+      title: '洞悉微客',
+      path: 'pages/index/index',
+      success: function (res) {
+        // 转发成功
+        wx.showModal({
+          content: '转发成功',
+          showCancel: false,
+        })
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -76,10 +92,11 @@ Page({
     var that = this;
     var condition = {
       click_url: e.currentTarget.dataset.click_url,
-      pict_url: e.currentTarget.dataset.picy_url,
+      pict_url: e.currentTarget.dataset.pict_url,
       title: e.currentTarget.dataset.title,
       member_id: wx.getStorageSync('member_id') 
     };
+
     http.httpPost('command', condition,function(res){
       that.setData({
         command: res.data.command
@@ -124,6 +141,29 @@ Page({
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: "../goodsDetail/goodsDetail?id=" + id
+    })
+  },
+
+  /**
+   * 一键复制淘口令 - 20180115 - LQ
+   */
+  copyCommand: function(){
+    var that = this;
+    wx.setClipboardData({
+      data: that.data.command,
+      success: function (res) {
+        wx.showModal({
+          content: '复制成功,请打开淘宝购买商品',
+          showCancel: false,
+          success:function(result){
+            if(result.confirm){
+              that.setData({
+                showJuan : true
+              });
+            }
+          }
+        })
+      }
     })
   }
 })

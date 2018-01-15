@@ -63,7 +63,9 @@ Page({
         });
       }
     });
-    that.myOrder();
+  },
+  onShow:function(){
+    this.myOrder();
   },
   toShare:function(e){
     wx.navigateTo({
@@ -76,7 +78,6 @@ Page({
     http.httpPost('myShareOrder',{
       member_id: wx.getStorageSync('member_id') 
     },function(res){
-      console.log(res.data.my_order)
       that.setData({
         list: res.data.my_order
       });
@@ -88,7 +89,6 @@ Page({
     http.httpPost('orderSquare',{
       member_id: wx.getStorageSync('member_id') 
     },function(res){
-      console.log(res.data.order_square)
       that.setData({
         list: res.data.order_square
       });

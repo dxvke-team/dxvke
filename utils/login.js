@@ -37,7 +37,6 @@ function login (cb) {
         var code = result.code;
         wx.getUserInfo({
           success: function (res) {
-            console.log(res);
             //发起网络请求
             var userInfo = res.userInfo;
             http.httpPost('login', { code: code, user_info: res.rawData, encryptedData: res.encryptedData, iv: res.iv}, function (res) {

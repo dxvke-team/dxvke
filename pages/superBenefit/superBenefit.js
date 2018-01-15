@@ -25,7 +25,6 @@ Page({
     http.httpPost('c_index_nine',{
       member_id: wx.getStorageSync('member_id') 
     },function(res){
-      console.log(res.data)
         that.setData({
           nine_banner : res.data.type,
           nine_goods : res.data.goods
@@ -58,18 +57,14 @@ Page({
         discount_goods: res.data.goods
       });
     });
-    console.log(that.data);
   },
 
 
   upper: function (e) {
-    console.log(e)
   },
   lower: function (e) {
-    console.log(e)
   },
   scroll: function (e) {
-    console.log(e)
   },
   tap: function (e) {
     for (var i = 0; i < order.length; ++i) {

@@ -20,7 +20,7 @@
       <view class='tip'>
         <image src='../../images/litter_sanjiao.png' class='icon'></image>晒单说明
       </view>
-      <view class='brief'>晒单说明说哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈米昂说明说米昂说说覅大当家斯蒂芬o</view>
+      <view class='brief'>{{shareContent}}</view>
     </view>
     <view style='height:140rpx;'></view>
     <view class='all_btn'>
