@@ -1,7 +1,7 @@
 <!--pages/discount/discount.wxml-->
 <view class='discount'>
    <view wx:for='{{goodsList}}' wx:key='index' class='product_child' catchtap='toGoodsDetail' data-id='{{item.id}}'>
-      <image src='{{item.pict_url}}'></image>
+      <image src='http:{{item.pict_url}}'></image>
       <view class='product_name'>
         <text class='name_text break'>{{item.title}}</text>
         <view style="margin: 15rpx 0;">

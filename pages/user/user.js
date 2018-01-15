@@ -2,23 +2,23 @@
 const app = getApp();
 var http = require('../../utils/httpHelper.js');
 var login = require('../../utils/login.js');
-
+wx.showShareMenu({
+  withShareTicket: true
+})
 Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    userAcer:0, //用用户元宝数
+    userAcer:0, //用户元宝数
   },
 
   onLoad: function () {
     var that = this;
     login.dologin(function(res){
-      console.log(res);
       that.setData({
         userInfo: res
       })
       //获取元宝数
-      console.log(wx.getStorageSync('member_id'));
       http.httpPost('member_acer', { member_id: wx.getStorageSync('member_id') }, function (res) {
         that.setData({
           userAcer: res.data.member_acer
@@ -26,8 +26,33 @@ Page({
       });
     })
 },
+
+onShareAppMessage: function (res) {
+  return {
+    title: '洞悉微客',
+    path: 'pages/index/index',
+    success: function (res) {
+      // 转发成功
+      wx.showModal({
+        content: '转发成功',
+        showCancel: false,
+      })
+    }
+  }
+},
+
+onShow: function(){
+  var that = this;
+  //获取元宝数
+  http.httpPost('member_acer', { member_id: wx.getStorageSync('member_id') }, function (res) {
+    if (res.data.member_acer != null){
+      that.setData({
+        userAcer: res.data.member_acer
+      });
+    }
+  });
+},
 toOrderList:function(e){
-  console.log(e)
   var type = e.currentTarget.dataset.type
   wx.navigateTo({
     url: '../orderList/orderList?type='+type,

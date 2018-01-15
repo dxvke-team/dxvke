@@ -6,7 +6,7 @@
         <view wx:if="{{currentTab==1}}" style=' margin-top: 80rpx;background:white;'>
           <view class="item-ans" wx:for="{{goodsList1}}" wx:key="*this" >
             <view class="avatar">
-              <image class="img" src="{{item.pict_url}}"></image>
+              <image class="img" src="http:{{item.pict_url}}"></image>
             </view>
             <view class="expertInfo">
               <view class="name">{{item.title}}</view>
@@ -33,7 +33,7 @@
         <view wx:if="{{currentTab==2}}" style=' margin-top: 80rpx;background:white;'>
           <view class="item-ans" wx:for="{{goodsList2}}" wx:key="*this" >
              <view class="avatar">
-              <image class="img" src="{{item.pict_url}}"></image>
+              <image class="img" src="http:{{item.pict_url}}"></image>
             </view>
             <view class="expertInfo">
               <view class="name">{{item.title}}</view>
@@ -60,7 +60,7 @@
         <view wx:if="{{currentTab==3}}" style=' margin-top: 80rpx;background:white;'>
           <view class="item-ans" wx:for="{{goodsList3}}" wx:key="*this" >
             <view class="avatar">
-              <image class="img" src="{{item.pict_url}}"></image>
+              <image class="img" src="http:{{item.pict_url}}"></image>
             </view>
             <view class="expertInfo">
               <view class="name">{{item.title}}</view>
@@ -87,7 +87,7 @@
         <view wx:if="{{currentTab==4}}" style=' margin-top: 80rpx;background:white;'>
           <view class="item-ans" wx:for="{{goodsList4}}" wx:key="*this" >
              <view class="avatar">
-              <image class="img" src="{{item.pict_url}}"></image>
+              <image class="img" src="http:{{item.pict_url}}"></image>
             </view>
             <view class="expertInfo">
               <view class="name">{{item.title}}</view>

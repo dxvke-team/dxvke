@@ -54,10 +54,17 @@ Page({
     },function(res){
       
       if(res.code == 200){
+        //获取会员元宝数
+        http.httpPost('member_acer', { member_id: wx.getStorageSync('member_id') }, function (res) {
+          that.setData({
+            memberAcer: res.data.member_acer
+          });
+        });
         that.setData({
           showModel: false,
           show: true,
         });
+        that.getTodayReward();
       }else{
         wx.showModal({
           content: '网络错误,请稍后再试',

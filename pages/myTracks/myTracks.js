@@ -25,11 +25,9 @@ Page({
     http.httpPost('footprint',{
       member_id: wx.getStorageSync('member_id') 
     },function(res){
-      console.log(res);
       that.setData({
         footPrint: res.data.history
       });
-      console.log(that.data.footPrint);
     });
   },
 

@@ -26,10 +26,7 @@ Page({
     var cur = e.target.dataset.current;
     if (this.data.currentTaB == cur) { return false; }
     else {
-      this.setData({
-        currentTab: cur
-      })
-      that.getGoodsList();
+      that.getGoodsList(e.target.dataset.type,cur);
     }
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
@@ -63,7 +60,6 @@ Page({
     http.httpPost('fanswelfare_banner',{
       member_id: wx.getStorageSync('member_id') 
     },function(res){
-      console.log(res);
       that.setData({
         banner:res.data.banner[0]['banner_image']
       });
@@ -75,7 +71,6 @@ Page({
     },function(res){
       that.setData({
         sortList: res.data.sorts,
-        currentTab: res.data.sorts[0]['id']
       });
     });
 
@@ -84,14 +79,15 @@ Page({
 
   },
 
-  getGoodsList:function(){
+  getGoodsList:function(type_id,cur){
     var that = this;
     http.httpPost('fanswelfare_product', { 
-       sorts_type: that.data.currentTab,
+      sorts_type: type_id,
        member_id: wx.getStorageSync('member_id') 
       },function(res){
       that.setData({
-        goodsList: res.data.goods_list
+        goodsList: res.data.goods_list,
+        currentTab: cur
       });
     });
   }

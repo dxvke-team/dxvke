@@ -20,7 +20,7 @@
       </view>
     </view>
   </view>
-  <view class='all_btn'>
+  <view hidden='{{chooseShow}}' class='all_btn'>
     <button bindtap="toAddress">添加地址</button>
   </view>
 </view>

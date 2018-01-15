@@ -11,11 +11,14 @@ Page({
       imgs:[],
       content:"", //晒单感受
       orderNum:"", //订单号
+      shareContent:"", //晒单说明
   },
   onLoad:function(e){
      this.setData({
        orderNum:e.num
-     })
+     }),
+     //获取晒单说明 - 20180115 - LQ
+     this.getShareContent();
   },
   chooseImageTap:function(e){
     let self = this;
@@ -127,6 +130,19 @@ Page({
             }
           })
         }
+      });
+    });
+  },
+
+  /**
+   * 获取晒单说明 - 20180115 - LQ
+   */
+  getShareContent:function()
+  {
+    var that = this;
+    http.httpPost('shareBrief',{},function(res){
+      that.setData({
+        shareContent: res.data.brief
       });
     });
   }
