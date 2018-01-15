@@ -22,6 +22,7 @@ Page({
     duration: 1000,
     page:1,
     limit:10,
+    scrollTop:0,
   },
   //事件处理函数
   bindViewTap: function() {
@@ -35,7 +36,6 @@ Page({
     that.getGoods()
     that.getGoodsType()
   },
-
   onShareAppMessage: function (res) {
     return {
       title: '洞悉微客',
@@ -157,4 +157,9 @@ Page({
     })
     this.getGoods()
   },
+  toTop:function(){
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+  }
 })

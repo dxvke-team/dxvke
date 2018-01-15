@@ -5,7 +5,7 @@
       <view class='list_des'>
         <text class='name'>{{item.person_name}}</text>
         <text class='tell'>{{item.telephone}}</text>
-        <view class='address'>{{item.province}}{{item.country}}{{item.district}}</view>
+        <view class='address'>{{item.province}}{{item.country}}{{item.district}}{{item.address}}</view>
       </view>
       <view class='setting'>
       <label wx:if='{{chooseShow}}' class="radio"  data-id='{{item.address_id}}' catchtap='chooseAddress' >

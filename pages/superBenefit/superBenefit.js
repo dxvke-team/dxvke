@@ -92,5 +92,10 @@ Page({
     wx.navigateTo({
       url: '../essential/essential',
     })
+  },
+  toTop: function () {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   }
 })

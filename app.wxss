@@ -96,3 +96,14 @@ font-size: 20rpx;
   width: 90%;
   margin: 30rpx auto;
 }
+.goTop{
+  position: fixed;
+  right: 28rpx;
+  bottom: 20rpx; 
+  border-radius: 50%;
+}
+.goTop image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}

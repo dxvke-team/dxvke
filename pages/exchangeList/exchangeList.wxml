@@ -30,4 +30,7 @@
             </scroll-view>
         </swiper-item>
     </swiper>
+    <view class='goTop' catchtap='toTop'>
+      <image src='../../images/goTop.png'></image>
+    </view>
 </view>

@@ -6,7 +6,7 @@
         <input name='person_name' value='{{addressInfo.person_name}}'></input>
       </view>
       <view>手机号码
-        <input name='telephone' value='{{addressInfo.telephone}}'></input>
+        <input name='telephone' value='{{addressInfo.telephone}}' type='number' maxlength='11'></input>
       </view>
       <view class="section">
         <view class="section__title">所在地区</view>

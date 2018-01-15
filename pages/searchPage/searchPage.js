@@ -224,5 +224,9 @@ Page({
       that.getGoodsList3()
     }
   },
-
+  toTop: function () {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+  }
 })

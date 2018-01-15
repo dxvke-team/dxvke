@@ -70,6 +70,11 @@ Page({
         freeMoney: res.data.free_money
       });
     })
+  },
+  toTop: function () {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   }
 
 

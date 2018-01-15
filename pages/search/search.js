@@ -67,5 +67,10 @@ Page({
     wx.navigateTo({
       url: "../searchPage/searchPage"
     })
+  },
+  toTop: function () {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   }
 })

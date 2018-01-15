@@ -61,7 +61,7 @@
    display: flex;
   justify-content: centr;
   align-items: center;
- 
+  border-top: 1rpx solid #e5e5e5;
   
 }
 .tab1{

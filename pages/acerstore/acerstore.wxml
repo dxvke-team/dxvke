@@ -38,4 +38,7 @@
       </loading>
     </view>
   </view>
+  <view class='goTop' catchtap='toTop'>
+      <image src='../../images/goTop.png'></image>
+    </view>
 </view>

@@ -15,13 +15,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      cate_id:options.id
+    })
+    this.getGoods()
+  },
+  getGoods:function(){
     var that = this;
-    http.httpPost('goodslist',{cate_id:options.id,limit:that.data.limit,page:that.data.page},function(res){
+    http.httpPost('goodslist', { cate_id: that.data.cate_id, limit: that.data.limit, page: that.data.page }, function (res) {
+      var goods = that.data.goods.concat(res.data.goodsList)
       that.setData({
-        goods: res.data.goodsList
+        goods: goods
       });
-
-      console.log(that.data.goods);
     });
   },
 
@@ -57,14 +62,28 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.setData({
+      goods: [],
+      limit: 10,
+      page: 1
+    });
+    this.getGoods()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    var page = this.data.page + 1
+    this.setData({
+      page: page
+    })
+    this.getGoods()
+  },
+  toTop: function () {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   },
 
   /**
@@ -72,5 +91,15 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  toGoodsDetail: function (e) {
+    wx.navigateTo({
+      url: "../goodsDetail/goodsDetail?id=" + e.currentTarget.dataset.id + '&type=' + e.currentTarget.dataset.type
+    })
+  },
+  toTop: function () {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   }
 })

@@ -111,5 +111,10 @@ Page({
     wx.navigateTo({
       url: '../exchange/exchange?id='+e.currentTarget.dataset.id,
     })
+  },
+  toTop: function () {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   }
 })  
