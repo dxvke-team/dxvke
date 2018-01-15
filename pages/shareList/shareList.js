@@ -93,6 +93,11 @@ Page({
         list: res.data.order_square
       });
     });
+  },
+  toTop: function () {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   }
 
 })

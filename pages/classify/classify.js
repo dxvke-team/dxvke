@@ -23,11 +23,12 @@ Page({
   getGoods:function(){
     var that = this;
     http.httpPost('goodslist',{
-        cate_id:options.id,
+        cate_id:this.data.cate_id,
         limit:that.data.limit,
         page:that.data.page,
         member_id: wx.getStorageSync('member_id') 
       },function(res){
+        var goods = that.data.goods.concat(res.data.goodsList)
       that.setData({
         goods: goods
       });
@@ -72,12 +73,14 @@ Page({
       page: 1
     });
     this.getGoods()
+    wx.stopPullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    console.log('下拉')
     var page = this.data.page + 1
     this.setData({
       page: page
@@ -99,11 +102,6 @@ Page({
   toGoodsDetail: function (e) {
     wx.navigateTo({
       url: "../goodsDetail/goodsDetail?id=" + e.currentTarget.dataset.id + '&type=' + e.currentTarget.dataset.type
-    })
-  },
-  toTop: function () {
-    wx.pageScrollTo({
-      scrollTop: 0
     })
   }
 })

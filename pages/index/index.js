@@ -73,7 +73,6 @@ Page({
       that.setData({
         goods: goods
       });
-      console.log(that.data.goods);
     })
 
   },
@@ -150,6 +149,7 @@ Page({
     this.getBanner()
     this.getGoods()
     this.getGoodsType()
+    wx.stopPullDownRefresh()
   },
   onReachBottom: function () {
     var page = this.data.page +  1
