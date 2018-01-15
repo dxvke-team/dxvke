@@ -23,7 +23,11 @@ Page({
   formSubmit:function(e){
     var data = e.detail.value;
     var that = this;
-    http.httpPost('feedback',{msg:data.msg,telephone:data.telephone},function(res){
+    http.httpPost('feedback',{
+        msg:data.msg,
+        telephone:data.telephone,
+        member_id: wx.getStorageSync('member_id') 
+      },function(res){
       if(res.code == 200){
           that.setData({
             msg : '',

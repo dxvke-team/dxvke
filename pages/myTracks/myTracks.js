@@ -22,7 +22,9 @@ Page({
   getFootPrint:function()
   {
     var that = this;
-    http.httpPost('footprint',{},function(res){
+    http.httpPost('footprint',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       console.log(res);
       that.setData({
         footPrint: res.data.history
@@ -36,7 +38,9 @@ Page({
    */
   cleadMyTracks:function(){
     var that = this;
-    http.httpPost('delPrint',{},function(res){
+    http.httpPost('delPrint',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       if(res.code == 200){
         that.setData({
           footPrint : []

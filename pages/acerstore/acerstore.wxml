@@ -24,9 +24,9 @@
         <view class="text">
           <text class="goods_title">{{item.product_name}}</text>
           <view style='position:relative;margin-top:10rpx;'>
-            <text class="acer">{{item.market_price.rmb}}<text wx:if="{{item.market_price.corner !=='00'}}">.{{item.market_price.corner}}</text></text>
+            <text class="acer">{{item.exchange_acer}}</text>
             <image src='../../images/index/acer_red.png'></image>
-            <text class="price">￥{{item.exchange_acer}}</text>
+            <text class="price">￥{{item.market_price.rmb}}<text wx:if="{{item.market_price.corner !=='00'}}">.{{item.market_price.corner}}</text></text>
             <text class='store_num'>库存 {{item.stock}}</text>
           </view>
         </view>

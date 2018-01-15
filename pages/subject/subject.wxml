@@ -24,7 +24,7 @@
                 </view>
                 <view style='flex-grow:2;text-align:center;'>
                   <text style='font-size:24rpx;color:#ff425f;'>领券立减{{item.coupon_number}}元</text>
-                  <view class='btn'>立刻抢</view>
+                  <view class='btn' catchtap='toGoodsDetail' data-id='{{item.id}}'>立刻抢</view>
                 </view>
               </view>
             </view>

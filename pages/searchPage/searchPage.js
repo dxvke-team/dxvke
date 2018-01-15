@@ -69,7 +69,9 @@ Page({
   // 清空搜索历史 - 20180109 - LQ
   clearHistory:function(){
     var that = this;
-    http.httpPost('delSearch',{},function(res){
+    http.httpPost('delSearch',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       if(res.code == 200){
         that.setData({
           historyWords : []
@@ -84,7 +86,9 @@ Page({
   getHotWords:function(){
     var that =this
     // 热门搜索词 - 20180109 - LQ
-    http.httpPost('searchHot', {}, function (res) {
+    http.httpPost('searchHot', {
+      member_id: wx.getStorageSync('member_id') 
+    }, function (res) {
       that.setData({
         hotWords: res.data.hot
       });
@@ -93,8 +97,9 @@ Page({
   getHistoryWords:function(){
     var that = this
     // 历史搜索词 - 20180109 - LQ
-    http.httpPost('searchPage', {}, function (res) {
-      console.log(res.data.history)
+    http.httpPost('searchPage', {
+      member_id: wx.getStorageSync('member_id') 
+    }, function (res) {
       that.setData({
         historyWords: res.data.history
       });
@@ -103,7 +108,9 @@ Page({
   getSort:function(){
     var that = this
     //搜索结果排序方式 - 20180109 - LQ
-    http.httpPost('serrchSort', {}, function (res) {
+    http.httpPost('serrchSort', {
+      member_id: wx.getStorageSync('member_id') 
+    }, function (res) {
       that.setData({
         sortList: res.data.sorts_type,
         currentTab: res.data.sorts_type[0]['id']
@@ -116,7 +123,8 @@ Page({
       keywords: that.data.keywords,
       sort: 9,
       page:that.data.page1,
-      limit:that.data.limit
+      limit:that.data.limit,
+      member_id: wx.getStorageSync('member_id') 
     }, function (res) {
       var goodsList1 = that.data.goodsList1.concat(res.data.product_list)
       that.setData({
@@ -130,7 +138,8 @@ Page({
       keywords: that.data.keywords,
       sort: 10,
       page: that.data.page2,
-      limit: that.data.limit
+      limit: that.data.limit,
+      member_id: wx.getStorageSync('member_id') 
     }, function (res) {
       var goodsList2 = that.data.goodsList2.concat(res.data.product_list)
       that.setData({
@@ -144,7 +153,8 @@ Page({
       keywords: that.data.keywords,
       sort: 11,
       page: that.data.page3,
-      limit: that.data.limit
+      limit: that.data.limit,
+      member_id: wx.getStorageSync('member_id') 
     }, function (res) {
       var goodsList3 = that.data.goodsList3.concat(res.data.product_list)
       that.setData({

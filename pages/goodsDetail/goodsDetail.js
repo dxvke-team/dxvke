@@ -55,7 +55,9 @@ Page({
   },
   service:function(){
     var that = this;
-    http.httpPost('serviceEwm',{},function(res){
+    http.httpPost('serviceEwm',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       that.setData({
         ewm : res.data.ewm
       });
@@ -76,6 +78,7 @@ Page({
       click_url: e.currentTarget.dataset.click_url,
       pict_url: e.currentTarget.dataset.picy_url,
       title: e.currentTarget.dataset.title,
+      member_id: wx.getStorageSync('member_id') 
     };
     http.httpPost('command', condition,function(res){
       that.setData({
@@ -97,12 +100,19 @@ Page({
    */
   getProductDetail: function(options){
     var that = this;
-    http.httpPost('goodsDetail', { goods_id: options.id, type: options.type }, function (res) {
+    http.httpPost('goodsDetail', { 
+        goods_id: options.id, 
+        type: options.type,
+        member_id: wx.getStorageSync('member_id') 
+      }, function (res) {
       that.setData({
         goodsDetail: res.data
       });
       //猜你喜欢商品列表 - 20180108 - LQ
-      http.httpPost('relevance', { id: that.data.goodsDetail.id }, function (res) {
+      http.httpPost('relevance', { 
+          id: that.data.goodsDetail.id,
+          member_id: wx.getStorageSync('member_id') 
+        }, function (res) {
         that.setData({
           likeList: res.data.goodsList
         });

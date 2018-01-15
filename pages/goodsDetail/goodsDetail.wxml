@@ -1,7 +1,7 @@
 <!--pages/goodsDeatail/goodsDetail.wxml-->
 <view class='goodsDetail'>
   <view class='detail'>
-    <image src='{{goodsDetail.pict_url}}' class='picture'></image>
+    <image src='http:{{goodsDetail.pict_url}}' class='picture'></image>
     <view class='detail_des'>
       <text class='goods_name break'>{{goodsDetail.title}}</text>
       <view>
@@ -17,7 +17,9 @@
         </text>
       </view>
       <view style="font-size:24rpx; color:#999;margin-top:10rpx;">
-        <text>价格<text style='text-decoration: line-through;margin-right:30rpx;'>￥{{goodsDetail.reserve_price.rmb}}.{{goodsDetail.reserve_price.corner}}</text></text>
+        <text wx:if='{{goodsDetail.reserve_price.corner == 00}}'>价格<text style='text-decoration: line-through;margin-right:30rpx;'>￥{{goodsDetail.reserve_price.rmb}}</text></text>
+
+        <text wx:else>价格<text style='text-decoration: line-through;margin-right:30rpx;'>￥{{goodsDetail.reserve_price.rmb}}.{{goodsDetail.reserve_price.corner}}</text></text>
         <text>销量{{goodsDetail.volume}}件</text>
       </view>
 
@@ -42,7 +44,7 @@
   <view class='product'>
 
     <view wx:for="{{likeList}}" wx:key='index' class='product_child' data-id='{{item.id}}'  catchtap="toDetail">
-      <image src='{{item.pict_url}}'></image>
+      <image src='http:{{item.pict_url}}'></image>
       <view class='product_name'>
         <text class='name_text break'>{{item.title}}</text>
         <view style="margin: 15rpx 0;">

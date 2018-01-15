@@ -22,7 +22,9 @@ Page({
   onLoad : function()
   {
     var that = this;
-    http.httpPost('c_index_nine',{},function(res){
+    http.httpPost('c_index_nine',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       console.log(res.data)
         that.setData({
           nine_banner : res.data.type,
@@ -30,21 +32,27 @@ Page({
         });
     });
 
-    http.httpPost('c_index_nineteen',{},function(res){
+    http.httpPost('c_index_nineteen',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
         that.setData({
           nineteen_banner: res.data.type,
           nineteen_goods: res.data.goods
         });
     });
 
-    http.httpPost('c_index_season', {}, function (res) {
+    http.httpPost('c_index_season', {
+      member_id: wx.getStorageSync('member_id') 
+    }, function (res) {
       that.setData({
         season_banner: res.data.type,
         season_goods: res.data.goods
       });
     });
 
-    http.httpPost('c_index_discount', {}, function (res) {
+    http.httpPost('c_index_discount', {
+      member_id: wx.getStorageSync('member_id') 
+    }, function (res) {
       that.setData({
         discount_banner: res.data.type,
         discount_goods: res.data.goods

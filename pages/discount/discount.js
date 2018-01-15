@@ -7,7 +7,7 @@ Page({
    */
   data: {
     page: 1, //页码
-    limie: 10, //每页显示条数 - LQ
+    limit: 10, //每页显示条数 - LQ
     goodsList: [], //聚折扣商品列表 - LQ
   },
 
@@ -18,8 +18,10 @@ Page({
     var that = this;
     http.httpPost('discount',{
       page:that.data.page,
-      limit:that.data.limit
+      limit:that.data.limit,
+      member_id: wx.getStorageSync('member_id') 
     },function(res){
+      console.log(res);
       that.setData({
         goodsList: res.data.discount_products
       });
@@ -27,51 +29,12 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 进入详情页 - 20180115 - LQ
    */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  toGoodsDetail:function(e){
+    var goods_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../goodsDetail/goodsDetail?id='+goods_id+'&type=3',
+    })
   }
 })

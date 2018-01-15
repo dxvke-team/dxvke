@@ -73,7 +73,9 @@ Page({
   //我的晒单 - 20180111 - LQ
   myOrder:function(){
     var that = this;
-    http.httpPost('myShareOrder',{},function(res){
+    http.httpPost('myShareOrder',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       console.log(res.data.my_order)
       that.setData({
         list: res.data.my_order
@@ -83,7 +85,9 @@ Page({
   //晒单广场 - 20180111 - LQ
   orderSquare:function(){
     var that = this;
-    http.httpPost('orderSquare',{},function(res){
+    http.httpPost('orderSquare',{
+      member_id: wx.getStorageSync('member_id') 
+    },function(res){
       console.log(res.data.order_square)
       that.setData({
         list: res.data.order_square

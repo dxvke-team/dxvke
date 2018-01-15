@@ -49,7 +49,10 @@ Page({
   getProductInfo:function(options)
   {
     var that = this;
-    http.httpPost('exchangeinfo',{product_id:options.id},function(res){
+    http.httpPost('exchangeinfo',{
+       product_id:options.id,
+       member_id: wx.getStorageSync('member_id') 
+      },function(res){
       var product_info = res.data.product_info;
       if(res.code == 200){
         if (product_info.product_type == 2){
@@ -105,7 +108,10 @@ Page({
   getAddressInfo: function(address_id)
   {
     var that = this;
-    http.httpGet('updateAddress',{address_id:address_id},function(res){
+    http.httpGet('updateAddress',{
+        address_id:address_id,
+        member_id: wx.getStorageSync('member_id') 
+      },function(res){
       var addressInfo = res.data.address_info;
       var addressData = {
         address_id: address_id,
@@ -138,7 +144,8 @@ Page({
       product_id : product_id,
       telephone: telephone,
       alipay: alipay,
-      address_id: address_id
+      address_id: address_id,
+      member_id: wx.getStorageSync('member_id') 
     },function(res){
       if(res.code == 200){
         wx.showModal({

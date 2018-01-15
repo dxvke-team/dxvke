@@ -17,12 +17,12 @@ Page({
       that.setData({
         userInfo: res
       })
-
       //获取元宝数
-      http.httpPost('member_acer',{},function(res){
-          that.setData({
-            userAcer: res.data.member_acer
-          });
+      console.log(wx.getStorageSync('member_id'));
+      http.httpPost('member_acer', { member_id: wx.getStorageSync('member_id') }, function (res) {
+        that.setData({
+          userAcer: res.data.member_acer
+        });
       });
     })
 },
