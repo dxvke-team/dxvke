@@ -10,7 +10,7 @@
     <swiper-item>
       <scroll-view scroll-y="true" class="scoll-h" scroll-top="{{scrollTop}}" bindscrolltolower="lower" lower-threshold="0">
         <block wx:for="{{goodsList1}}" wx:key="{{item}}">
-          <view class='product_child'>
+          <view class='product_child' catchtap='toGoodsDetail' data-id='{{item.id}}'>
             <image src='http:{{item.pict_url}}'></image>
             <view class='product_name'>
               <text class='name_text break'>{{item.title}}</text>
@@ -35,7 +35,7 @@
       <swiper-item>
       <scroll-view scroll-y="true" class="scoll-h" scroll-top="{{scrollTop}}" bindscrolltolower="lower" lower-threshold="0">
         <block wx:for="{{goodsList2}}" wx:key="{{item}}">
-          <view class='product_child'>
+          <view class='product_child' catchtap='toGoodsDetail' data-id='{{item.id}}'>
             <image src='http:{{item.pict_url}}'></image>
             <view class='product_name'>
               <text class='name_text break'>{{item.title}}</text>
@@ -60,7 +60,7 @@
       <swiper-item>
       <scroll-view scroll-y="true" class="scoll-h" scroll-top="{{scrollTop}}" bindscrolltolower="lower" lower-threshold="0">
         <block wx:for="{{goodsList3}}" wx:key="{{item}}">
-          <view class='product_child'>
+          <view class='product_child' catchtap='toGoodsDetail' data-id='{{item.id}}'>
             <image src='http:{{item.pict_url}}'></image>
             <view class='product_name'>
               <text class='name_text break'>{{item.title}}</text>

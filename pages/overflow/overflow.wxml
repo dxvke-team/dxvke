@@ -38,7 +38,8 @@
                 </view>
                 <view style='flex-grow:2;text-align:center;'>
                   <text style='font-size:24rpx;color:#ff425f;'>已抢{{item.volume}}件</text>
-                  <view class='btn'>立刻抢</view>
+                  <view class='btn' style='background-color:#999999' wx:if='{{item.not_start}}'>立刻抢</view>
+                  <view class='btn' wx:else catchtap='toGoodsDetail' data-id='{{item.id}}'>立刻抢</view>
                 </view>
               </view>
             </view>
@@ -73,7 +74,8 @@
                 </view>
                 <view style='flex-grow:2;text-align:center;'>
                   <text style='font-size:24rpx;color:#ff425f;'>已抢{{item.volume}}件</text>
-                  <view class='btn'>立刻抢</view>
+                   <view class='btn' style='background-color:#999999' wx:if='{{item.not_start}}'>立刻抢</view>
+                  <view class='btn' wx:else catchtap='toGoodsDetail' data-id='{{item.id}}'>立刻抢</view>
                 </view>
               </view>
             </view>
@@ -108,7 +110,8 @@
                 </view>
                 <view style='flex-grow:2;text-align:center;'>
                   <text style='font-size:24rpx;color:#ff425f;'>已抢{{item.volume}}件</text>
-                  <view class='btn'>立刻抢</view>
+                  <view class='btn' style='background-color:#999999' wx:if='{{item.not_start}}'>立刻抢</view>
+                  <view class='btn' wx:else catchtap='toGoodsDetail' data-id='{{item.id}}'>立刻抢</view>
                 </view>
               </view>
             </view>
@@ -143,7 +146,8 @@
                 </view>
                 <view style='flex-grow:2;text-align:center;'>
                   <text style='font-size:24rpx;color:#ff425f;'>已抢{{item.volume}}件</text>
-                  <view class='btn'>立刻抢</view>
+                   <view class='btn' style='background-color:#999999' wx:if='{{item.not_start}}'>立刻抢</view>
+                  <view class='btn' wx:else catchtap='toGoodsDetail' data-id='{{item.id}}'>立刻抢</view>
                 </view>
               </view>
             </view>
@@ -155,5 +159,5 @@
   <view class='goTop' catchtap='toTop'>
     <image src='../../images/goTop.png'></image>
   </view>
- 
+
 </view>
