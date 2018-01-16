@@ -9,7 +9,7 @@
               <image class="img" src="http:{{item.pict_url}}"></image>
             </view>
             <view class="expertInfo">
-              <view class="name">{{item.title}}</view>
+              <view class="name break">{{item.title}}</view>
               <view class='des'>
                 <view style='width:280rpx;font-size:24rpx;'>
                     <view style='margin-bottom:20rpx;'>

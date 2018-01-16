@@ -2,7 +2,7 @@
 <view class="container">
    <view class='product'>
     <view class='product_child' wx:for="{{goods}}" wx:key='{{item}}' data-id='{{item.id}}' data-type='' catchtap="toGoodsDetail">
-      <image src='{{item.pict_url}}'></image>
+      <image src='http:{{item.pict_url}}'></image>
       <view class='product_name'>
         <text class='name_text break'>{{item.title}}</text>
         <view style="margin: 15rpx 0;">

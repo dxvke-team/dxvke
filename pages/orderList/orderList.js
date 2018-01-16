@@ -9,9 +9,6 @@ Page({
     winHeight: "",//窗口高度
     currentTab: 0, //预设当前项的值 1虚拟 2实物 3全部
     scrollLeft: 0, //tab标题的滚动条位置
-    expertList: [{ //假数据
-
-    }],
     orderList: [], //订单列表 - LQ
     isShow:false,
     show:false,
@@ -143,5 +140,52 @@ Page({
     wx.navigateTo({
       url: '../share/share?num='+num,
     })
-  }
+  },
+  onPullDownRefresh: function () {
+    // var that = this
+    // this.setData({
+    //   goodsList1: [], //抢购商品
+    //   goodsList2: [], //抢购商品
+    //   goodsList3: [], //抢购商品
+    //   goodsList4: [], //抢购商品
+    // });
+    // //抢购商品 - 20180108 - LQ
+    // that.getPanicList1();
+    // that.getPanicList2();
+    // that.getPanicList3();
+    // that.getPanicList4();
+    // wx.stopPullDownRefresh()
+  },
+  lower: function (e) {
+    console.log('上拉')
+    // var cur = this.data.currentTab
+    // console.log(cur)
+    // switch (cur) {
+    //   case 0:
+    //     var page1 = this.data.page1 + 1
+    //     var that = this
+    //     that.getPanicList1();
+    //     break;
+    //   case 1:
+    //     var page2 = this.data.page2 + 1
+    //     var that = this
+    //     that.getPanicList2();
+    //     break;
+    //   case 2:
+    //     var page3 = this.data.page3 + 1
+    //     var that = this
+    //     that.getPanicList3();
+    //     break;
+    //   case 3:
+    //     var page4 = this.data.page4 + 1
+    //     var that = this
+    //     that.getPanicList4();
+    //     break;
+    // }
+  },
+  toTop: function () {
+    this.setData({
+      scrollTop: 0
+    })
+  },
 })

@@ -80,7 +80,7 @@ Page({
       that.setData({
         showService: false
       })
-    });
+      });
     
   },
   close:function(e){

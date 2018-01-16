@@ -249,5 +249,6 @@ getBanner:function(){
     this.setData({
       scrollTop: 0
     })
-  }
+  },
+  
 })

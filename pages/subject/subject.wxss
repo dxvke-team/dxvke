@@ -86,7 +86,6 @@
 .expertInfo .name {
   font-size: 32rpx;
   color: #333;
-  height: 50rpx;
   overflow: hidden;
 }
 .old_price{
