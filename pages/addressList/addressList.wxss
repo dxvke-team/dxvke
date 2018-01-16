@@ -42,3 +42,9 @@
 .setting text:nth-child(odd){
   margin-right:20rpx;
 }
+.empty{
+  font-size: 28rpx;
+  color: #333;
+  text-align: center;
+  margin: 200rpx auto; 
+}

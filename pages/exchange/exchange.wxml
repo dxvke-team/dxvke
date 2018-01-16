@@ -53,7 +53,7 @@
           <view class='address'>
             <view class='default'>默认</view>
             <view>
-              <view class='site'>{{defaultAddress.province}}，{{defaultAddress.country}}，{{defaultAddress.district}}{{defaultAddress.address}}</view>
+              <view class='site' wx:if='{{defaultAddress.length !== 0}}'>{{defaultAddress.province}}，{{defaultAddress.country}}，{{defaultAddress.district}}{{defaultAddress.address}}</view>
               <view style='color:#999;'>{{defaultAddress.person_name}} {{defaultAddress.telephone}}</view>
               <input hidden='true' name='address_id' value='{{defaultAddress.address_id}}' />
             </view>

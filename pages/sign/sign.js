@@ -64,7 +64,6 @@ Page({
           showModel: false,
           show: true,
         });
-        that.getTodayReward();
       }else{
         wx.showModal({
           content: '网络错误,请稍后再试',
@@ -74,6 +73,8 @@ Page({
     });
   },
   close:function(){
+    var that = this;
+    that.getTodayReward();
     this.setData({
       showModel:true
     })
