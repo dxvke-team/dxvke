@@ -14,10 +14,16 @@ Page({
 
   onLoad: function () {
     var that = this;
+    wx.showLoading({
+      title: '登录中...',
+      mask: true,
+    })
+
     login.dologin(function(res){
       that.setData({
         userInfo: res
       })
+      wx.hideLoading();
       //获取元宝数
       http.httpPost('member_acer', { member_id: wx.getStorageSync('member_id') }, function (res) {
         that.setData({
