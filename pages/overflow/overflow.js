@@ -249,5 +249,15 @@ getBanner:function(){
     this.setData({
       scrollTop: 0
     })
+  },
+
+  /**
+   * 商品详情
+   */
+  toGoodsDetail: function(e){
+    var goods_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../goodsDetail/goodsDetail?id=' + goods_id+'&type=1',
+    })
   }
 })

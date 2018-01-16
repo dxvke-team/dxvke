@@ -90,6 +90,13 @@ Page({
         currentTab: cur
       });
     });
+  },
+
+  toGoodsDetail: function(e){
+    var goods_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../goodsDetail/goodsDetail?id=' + goods_id,
+    })
   }
   // footerTap: app.footerTap
 })
