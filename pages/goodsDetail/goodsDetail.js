@@ -26,7 +26,7 @@ Page({
   onShareAppMessage: function (res) {
     var that = this;
     return {
-      title: '洞悉微客',
+      title: that.data.goodsDetail.title,
       path: 'pages/goodsDetail/goodsDetail?id=' + that.data.goodsDetail.id +'&type='+that.data.goodsType,
       success: function (res) {
         // 转发成功

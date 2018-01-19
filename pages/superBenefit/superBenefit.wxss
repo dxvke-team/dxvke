@@ -56,33 +56,33 @@
 
 .scroll_box {
   width: 100%;
-  height: 320rpx;
+  height: 300rpx;
   overflow: hidden;
   background: #fff;
   white-space: nowrap;
 }
 
 .item_list {
-  width: 220rpx;
+  width: 200rpx;
   height: auto;
   margin-left: 18rpx;
   display: inline-block;
   text-align: center;
-  border: 1rpx solid #e8e8e8;
 }
 
 .item_list_img {
   width: 100%;
   height: 200rpx;
+  border-radius: 8rpx;
 }
 .item_list_text{
   font-size: 24rpx;
   padding: 10rpx 0;
 }
 .item_list_name {
-   width: 182rpx;   
+   /* width: 182rpx;    */
   color: #333;
-  padding: 0 10rpx 10rpx;
+  padding: 0 0rpx 10rpx;
 }
 .item_list_newPrice{
   color: #ff425f;
