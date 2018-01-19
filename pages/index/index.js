@@ -162,5 +162,13 @@ Page({
     wx.pageScrollTo({
       scrollTop: 0
     })
+  },
+
+  //banner跳转
+  clickBanner: function(e){
+    var url = '../' +e.currentTarget.dataset.url;
+    wx.navigateTo({
+      url: url,
+    })
   }
 })

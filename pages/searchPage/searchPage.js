@@ -119,6 +119,7 @@ Page({
   },
   getGoodsList1:function(){
     var that = this
+    console.log(that.data.keywords)
     http.httpPost('doSearch', {
       keywords: that.data.keywords,
       sort: 9,
@@ -174,7 +175,13 @@ Page({
       var searchWord = e.currentTarget.dataset.key;
       that.setData({
         show: false,
-        keywords: searchWord
+        keywords: searchWord,
+        goodsList1: [], //搜索结果 - LQ
+        goodsList2: [],
+        goodsList3: [],
+        page1: 1,
+        page2: 1,
+        page3: 1
       })
       that.getGoodsList1()
       that.getGoodsList2()
@@ -183,7 +190,13 @@ Page({
       var searchWord = e.detail.value
       that.setData({
         show: false,
-        keywords: searchWord
+        keywords: searchWord,
+        goodsList1: [], //搜索结果 - LQ
+        goodsList2: [],
+        goodsList3: [],
+        page1: 1,
+        page2: 1,
+        page3: 1
       })
       that.getGoodsList1()
       that.getGoodsList2()

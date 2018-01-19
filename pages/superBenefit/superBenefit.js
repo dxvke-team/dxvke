@@ -22,6 +22,15 @@ Page({
   onLoad : function()
   {
     var that = this;
+    wx.showLoading({
+      title: '加载中...',
+      mask: true,
+    })
+
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
+
     http.httpPost('c_index_nine',{
       member_id: wx.getStorageSync('member_id') 
     },function(res){
@@ -99,6 +108,15 @@ Page({
   toTop: function () {
     wx.pageScrollTo({
       scrollTop: 0
+    })
+  },
+
+  toGoodsDetail: function(e)
+  {
+    var goods_id = e.currentTarget.dataset.id;
+    var type = e.currentTarget.dataset.type;
+    wx.navigateTo({
+      url: '../goodsDetail/goodsDetail?id=' + goods_id + '&type=' + type,
     })
   }
 })

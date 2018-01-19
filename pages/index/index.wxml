@@ -4,7 +4,7 @@
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:100%;' indicator-color='white;' indicator-active-color="#ff425f">
       <block wx:for="{{imgUrls}}" wx:key="{{item}}">
         <swiper-item>
-          <image src="{{item.banner_image}}" class="slide-image" style="width:100%;height:100%;"/>
+          <image src="{{item.banner_image}}" class="slide-image" style="width:100%;height:100%;" catchtap='clickBanner' data-url='{{item.mini_url}}'/>
         </swiper-item>
       </block>
     </swiper>
@@ -13,7 +13,6 @@
 
   <view class='navigate'>
      <view class='width_navigate'> 
-
       <view wx:for='{{goods_type}}' class='navigate_child' id='{{item.id}}' catchtap="toClassify" wx:key='{{item}}'>
         <view style="width:100%;">
           <image src="{{item.image_url}}"></image>

@@ -20,12 +20,14 @@ Page({
      likeList:[], //猜你喜欢商品列表 - LQ
      command:'', //淘口令
      ewm:'', //客服二维码
+     goodsType:'', //商品类型
   },
 
   onShareAppMessage: function (res) {
+    var that = this;
     return {
       title: '洞悉微客',
-      path: 'pages/index/index',
+      path: 'pages/goodsDetail/goodsDetail?id=' + that.data.goodsDetail.id +'&type='+that.data.goodsType,
       success: function (res) {
         // 转发成功
         wx.showModal({
@@ -117,6 +119,11 @@ Page({
    */
   getProductDetail: function(options){
     var that = this;
+    if (options.type){
+      that.setData({
+        goodsType: options.type
+      });
+    }
     http.httpPost('goodsDetail', { 
         goods_id: options.id, 
         type: options.type,

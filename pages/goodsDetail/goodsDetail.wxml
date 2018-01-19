@@ -52,7 +52,7 @@
                <text class="juan_style_left">券</text>
           <text class="juan_style_right">{{item.coupon_number}}元</text>
           </text>
-          <text class="return_num_style">返{{item.fans_acer}}元宝</text>
+          <!-- <text class="return_num_style">返{{item.fans_acer}}元宝</text> -->
         </view>
         <view>
           <text class='price'>￥</text>
