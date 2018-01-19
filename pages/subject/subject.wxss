@@ -1,6 +1,10 @@
 /* pages/subject/subject.wxss */
 .subject{
+  width: 100%;
   font-size: 0;
+  height: 100%;
+   position: fixed;
+  top: 0; 
 }
 .tab-h {
   height: 80rpx;
@@ -11,10 +15,6 @@
   background: white;
   font-size: 14px;
   white-space: nowrap;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
   border-bottom: 1rpx solid #e1e1e1;
   border-top: 1rpx solid #e1e1e1;
 }
@@ -107,4 +107,8 @@
     line-height: 46rpx;
     display: inline-block;
     margin:10rpx 0;
+}
+.scoll-h{
+  overflow: scroll;
+  height: 100%;
 }

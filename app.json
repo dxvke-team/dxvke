@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/acerstore/acerstore",
     "pages/user/user",
