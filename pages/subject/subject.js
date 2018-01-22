@@ -101,7 +101,7 @@ Page({
   getGoodsList3: function () {
     var that = this;
     http.httpPost('nine', { sort: 3, type_id: that.data.type_id, page: that.data.page3, limit: that.data.limit, member_id: wx.getStorageSync('member_id')  }, function (res) {
-      var goodsList3 = that.data.goodsList4.concat(res.data.nine_products)
+      var goodsList3 = that.data.goodsList3.concat(res.data.nine_products)
       that.setData({
         goodsList3: goodsList3
       });
