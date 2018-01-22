@@ -23,6 +23,7 @@ Page({
     page:1,
     limit:10,
     scrollTop:0,
+    loadingShow:true,
   },
   //事件处理函数
   bindViewTap: function() {
@@ -75,7 +76,8 @@ Page({
     http.httpPost('index_goods', { page: that.data.page, limit: that.data.limit }, function (res) {
       var goods = that.data.goods.concat(res.data.goods)
       that.setData({
-        goods: goods
+        goods: goods,
+        loading:true,
       });
       wx.hideLoading();
     })
@@ -163,7 +165,8 @@ Page({
     // })
     var page = this.data.page +  1
     this.setData({
-      page:page
+      page:page,
+      loadingShow:false,
     })
     this.getGoods()
   },
