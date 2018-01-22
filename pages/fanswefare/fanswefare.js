@@ -110,8 +110,9 @@ Page({
        page:that.data.page1,
        limit:that.data.limit
       },function(res){
+        var goodsList1 = that.data.goodsList1.concat(res.data.goods_list)
       that.setData({
-        goodsList1: res.data.goods_list
+        goodsList1: goodsList1 
       });
       wx.hideLoading();
     });
@@ -124,8 +125,9 @@ Page({
       page: that.data.page2,
       limit: that.data.limit
     }, function (res) {
+      var goodsList2 = that.data.goodsList2.concat(res.data.goods_list)
       that.setData({
-        goodsList2: res.data.goods_list
+        goodsList2: goodsList2
       });
       wx.hideLoading();
     });
@@ -138,8 +140,9 @@ Page({
       page: that.data.page3,
       limit: that.data.limit
     }, function (res) {
+      var goodsList3 = that.data.goodsList3.concat(res.data.goods_list)
       that.setData({
-        goodsList3: res.data.goods_list
+        goodsList3: goodsList3
       });
       wx.hideLoading();
     });
@@ -152,8 +155,9 @@ Page({
       page: that.data.page4,
       limit: that.data.limit
     }, function (res) {
+      var goodsList4 = that.data.goodsList4.concat(res.data.goods_list)
       that.setData({
-        goodsList4: res.data.goods_list
+        goodsList4: goodsList4
       });
       wx.hideLoading();
     });
