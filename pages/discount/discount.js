@@ -15,7 +15,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getGoodsList()
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
+    this.getGoodsList();
   },
 
   getGoodsList:function(){
@@ -29,6 +33,7 @@ Page({
       that.setData({
         goodsList: goodsList
       });
+      wx.hideLoading();
     });
   },
 
@@ -51,6 +56,10 @@ Page({
     wx.stopPullDownRefresh()
   },
   onReachBottom: function () {
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
     var page = this.data.page + 1
     this.setData({
       page: page

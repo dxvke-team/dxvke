@@ -46,6 +46,10 @@ Page({
     }
   },
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
     var that = this;
     that.setData({
       type_id: options.type_id
@@ -85,6 +89,7 @@ Page({
       that.setData({
         goodsList1: goodsList1
       });
+      wx.hideLoading();
     });
   },
   //商品列表 - 20180108 - LQ
@@ -95,6 +100,7 @@ Page({
       that.setData({
         goodsList2: goodsList2
       });
+      wx.hideLoading();
     });
   },
   //商品列表 - 20180108 - LQ
@@ -105,6 +111,7 @@ Page({
       that.setData({
         goodsList3: goodsList3
       });
+      wx.hideLoading();
     });
   },
   //商品列表 - 20180108 - LQ
@@ -115,6 +122,7 @@ Page({
       that.setData({
         goodsList4: goodsList4
       });
+      wx.hideLoading();
     });
   },
 
@@ -149,7 +157,10 @@ Page({
     wx.stopPullDownRefresh()
   },
   lower: function (e) {
-    console.log('上拉')
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
     var cur = this.data.currentTab
     console.log(cur)
     switch (cur) {

@@ -50,6 +50,10 @@ Page({
     }
   },
   onLoad: function () {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     var that = this;
     //  高度自适应
     wx.getSystemInfo({
@@ -109,6 +113,7 @@ Page({
       that.setData({
         goodsList1: res.data.goods_list
       });
+      wx.hideLoading();
     });
   },
   getGoodsList2: function () {
@@ -122,6 +127,7 @@ Page({
       that.setData({
         goodsList2: res.data.goods_list
       });
+      wx.hideLoading();
     });
   },
   getGoodsList3: function () {
@@ -135,6 +141,7 @@ Page({
       that.setData({
         goodsList3: res.data.goods_list
       });
+      wx.hideLoading();
     });
   },
   getGoodsList4: function () {
@@ -148,6 +155,7 @@ Page({
       that.setData({
         goodsList4: res.data.goods_list
       });
+      wx.hideLoading();
     });
   },
   onPullDownRefresh: function () {
@@ -175,7 +183,6 @@ Page({
     setTimeout(wx.stopPullDownRefresh,5000)
   },
   lower: function (e) {
-    console.log('上拉')
     var cur = this.data.currentTab
     switch (cur) {
       case 0:

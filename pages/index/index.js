@@ -31,6 +31,10 @@ Page({
     })
   },
   onLoad: function () {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     var that = this;
     that.getBanner()
     that.getGoods()
@@ -73,6 +77,7 @@ Page({
       that.setData({
         goods: goods
       });
+      wx.hideLoading();
     })
 
   },
@@ -152,6 +157,10 @@ Page({
     wx.stopPullDownRefresh()
   },
   onReachBottom: function () {
+    // wx.showLoading({
+    //   title: '加载中',
+    //   mask: true,
+    // })
     var page = this.data.page +  1
     this.setData({
       page:page

@@ -68,6 +68,10 @@ Page({
     }
   },
   onLoad: function () {
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
     var that = this;
     //  高度自适应
     wx.getSystemInfo({
@@ -135,6 +139,7 @@ getBanner:function(){
       that.setData({
         goodsList1: goodsList1
       });
+      wx.hideLoading();
     });
   },
   getPanicList2: function () {
@@ -150,6 +155,7 @@ getBanner:function(){
       that.setData({
         goodsList2: goodsList2
       });
+      wx.hideLoading();
     });
   },
   getPanicList3: function () {
@@ -165,6 +171,7 @@ getBanner:function(){
       that.setData({
         goodsList3: goodsList3
       });
+      wx.hideLoading();
     });
   },
   getPanicList4: function () {
@@ -180,6 +187,7 @@ getBanner:function(){
       that.setData({
         goodsList4: goodsList4
       });
+      wx.hideLoading();
     });
   },
   onPullDownRefresh: function () {
@@ -207,7 +215,10 @@ getBanner:function(){
     wx.stopPullDownRefresh()
   },
   lower: function (e) {
-    console.log('上拉')
+    // wx.showLoading({
+    //   title: '加载中',
+    //   mask: true,
+    // })
     var cur = this.data.currentTab
     console.log(cur)
     switch (cur) {

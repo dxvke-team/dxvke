@@ -131,6 +131,7 @@ Page({
       that.setData({
         goodsList1: goodsList1,
       });
+      wx.hideLoading();
     });
   },
   getGoodsList2: function () {
@@ -146,6 +147,7 @@ Page({
       that.setData({
         goodsList2: goodsList2,
       });
+      wx.hideLoading();
     });
   },
   getGoodsList3: function () {
@@ -161,6 +163,7 @@ Page({
       that.setData({
         goodsList3: goodsList3,
       });
+      wx.hideLoading();
     });
   },
   // 获取焦点事件
@@ -169,6 +172,10 @@ Page({
   },
   // 开始搜索
   bindconfirm:function(e){
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
     var that = this;
     //搜索商品 - 20180109 - LQ
     if (e.currentTarget.dataset.key){
@@ -223,7 +230,10 @@ Page({
     this.getGoodsList3()
   },
   onReachBottom: function () {
-    console.log("上拉")
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     var that = this
     if(that.data.currentTab==9){
       var page = this.data.page1 + 1
