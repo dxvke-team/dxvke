@@ -109,3 +109,9 @@ font-size: 20rpx;
   border-radius: 50%;
   border: 1rpx solid #d3d3d3;
 }
+.load{
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+  margin-bottom: 10rpx;
+}
