@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container" style='padding-top:0px;'>
   <view style="width:100%;height:260rpx;">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:100%;' indicator-color='white;' indicator-active-color="#ff425f">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:100%;' indicator-color='white;' indicator-active-color="#ff425f" circular="true">
       <block wx:for="{{imgUrls}}" wx:key="{{item}}">
         <swiper-item>
           <image src="{{item.banner_image}}" class="slide-image" style="width:100%;height:100%;" catchtap='clickBanner' data-url='{{item.mini_url}}'/>
